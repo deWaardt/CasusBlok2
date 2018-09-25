@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CasusBlok2Main.Database;
+using CasusBlok2Main.Views;
 
 namespace CasusBlok2Main
 {
@@ -23,6 +25,12 @@ namespace CasusBlok2Main
         public MainWindow()
         {
             InitializeComponent();
+            loginWindow login = new loginWindow();
+            login.Show();
+            this.Close();
+            //DbController db = new DbController();
+            //User usr = db.getUser("superhans");
+            //Console.WriteLine(usr.firstName);
         }
     }
 }
