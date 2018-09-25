@@ -10,7 +10,7 @@ namespace CasusBlok2Main.Database
 {
     class DbController
     {
-        public string cs = @"server=192.168.0.110;port=3306;userid=admin;
+        public string cs = @"server=84.28.62.177;port=33060;userid=admin;
             password=casus;database=casusblok2;sslmode=none;";
 
         public MySqlConnection conn = null;
