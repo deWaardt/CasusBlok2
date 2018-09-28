@@ -36,8 +36,8 @@ namespace CasusBlok2Main.Views
             string name = usrname.Text;
             string pass = password.Text;
 
-            User loginuser = db.getUser(name);
-            if (pass == loginuser.password)
+            Klant loginuser = db.getUser(name);
+            if (pass == loginuser.wachtwoord)
             {
                 Console.WriteLine("Login success");
                 Mainframe.currentLoggedIn = loginuser;
