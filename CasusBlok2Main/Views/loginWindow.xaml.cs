@@ -36,16 +36,15 @@ namespace CasusBlok2Main.Views
             string name = usrname.Text;
             string pass = password.Text;
 
-            Klant loginuser = db.getuser(name);
+            Klant loginuser = db.getUser(name);
             if (pass == loginuser.wachtwoord)
             {
-                console.writeline("login success");
-                mainframe.currentloggedin = loginuser;
-                mainframe.whologgedin();
+                Console.WriteLine("Login success");
+                Mainframe.currentLoggedIn = loginuser;
+                Mainframe.whoLoggedIn();
             }
 
-            else { console.writeline("login unsuccesfull"); }
-
+            else { Console.WriteLine("Login unsuccesfull"); }
         }
     }
 }

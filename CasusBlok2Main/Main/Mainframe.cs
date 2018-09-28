@@ -10,7 +10,7 @@ namespace CasusBlok2Main.Main
     static class Mainframe
     {
         //DbController db = new DbController();
-        public static User currentLoggedIn;
+        public static Klant currentLoggedIn;
 
         //public void processLogin()
         //{
@@ -19,7 +19,7 @@ namespace CasusBlok2Main.Main
 
         public static void whoLoggedIn()
         {
-            Console.WriteLine("Current logged in user: " + currentLoggedIn.firstName);
+            Console.WriteLine("Current logged in user: " + currentLoggedIn.voornaam);
         }
     }
 }
