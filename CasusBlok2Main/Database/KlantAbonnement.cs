@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CasusBlok2Main.Database
 {
-    class KlantAbbonoment
+    class KlantAbonnement
     {
-        int klantid { get; set; }
-        int abonnementid { get; set; }
+        public int klantid { get; set; }
+        public int abonnementid { get; set; }
     }
 }

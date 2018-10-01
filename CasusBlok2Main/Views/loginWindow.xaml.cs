@@ -45,6 +45,19 @@ namespace CasusBlok2Main.Views
             }
 
             else { Console.WriteLine("Login unsuccesfull"); }
+
+            //Test getAanvraag;
+            Aanvraag aanvraag = db.getAanvraag(1);
+            Console.WriteLine(aanvraag.data);
+
+            //Test getAllAanvraagVanKlant;
+            List<Aanvraag> allAanvraag = db.getAllAanvragenVanKlant(1);
+            Console.WriteLine(allAanvraag[1].data);
+
+            //Test getAllBelmomentenVanKlant;
+            List<Belmoment> allBelMomenten = db.getAllBelmomentenVanKlant(1);
+            Console.WriteLine(allBelMomenten[0].notitie);
+
         }
     }
 }

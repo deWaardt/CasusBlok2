@@ -8,10 +8,10 @@ namespace CasusBlok2Main.Database
 {
     class Melding
     {
-        int meldingnummer { get; set; }
-        int klantid { get; set; }
-        int status { get; set; }
-        int meldingtype { get; set; }
-        string data { get; set; }
+        public int meldingnummer { get; set; }
+        public int klantid { get; set; }
+        public int status { get; set; }
+        public int meldingtype { get; set; }
+        public string data { get; set; }
     }
 }

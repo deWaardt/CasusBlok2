@@ -8,7 +8,7 @@ namespace CasusBlok2Main.Database
 {
     class Verbruik
     {
-        int klantid { get; set; }
-        int meterstand { get; set; }
+        public int klantid { get; set; }
+        public int meterstand { get; set; }
     }
 }

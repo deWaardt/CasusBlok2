@@ -8,8 +8,9 @@ namespace CasusBlok2Main.Database
 {
     class Aanvraag
     {
-        int aanvraagnummer { get; set; }
-        int aanvraagtype { get; set; }
-        string data { get; set; }
+        public int aanvraagnummer { get; set; }
+        public int aanvraagtype { get; set; }
+        public int klantid { get; set; }
+        public string data { get; set; }
     }
 }

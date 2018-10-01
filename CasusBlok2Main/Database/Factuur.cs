@@ -8,11 +8,11 @@ namespace CasusBlok2Main.Database
 {
     class Factuur
     {
-        int factuurnummer { get; set; }
-        int rekeningnummer { get; set; }
-        string periode { get; set; } //ander objecttype bedenken
-        int klantid { get; set; }
-        int status { get; set; }
-        int meterstand { get; set; }
+        public int factuurnummer { get; set; }
+        public int rekeningnummer { get; set; }
+        public string periode { get; set; } //ander objecttype bedenken
+        public int klantid { get; set; }
+        public int status { get; set; }
+        public int meterstand { get; set; }
     }
 }

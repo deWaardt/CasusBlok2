@@ -8,9 +8,9 @@ namespace CasusBlok2Main.Database
 {
     class Abonnement
     {
-        int abbonementid { get; set; }
-        string naam { get; set; } 
-        int prijs { get; set; }
-        int type { get; set; }
+        public int abbonementid { get; set; }
+        public string naam { get; set; }
+        public int prijs { get; set; }
+        public int type { get; set; }
     }
 }
