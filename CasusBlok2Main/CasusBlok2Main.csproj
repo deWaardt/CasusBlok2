@@ -68,6 +68,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Database\Aanvraag.cs" />
+    <Compile Include="Database\Abonnement.cs" />
+    <Compile Include="Database\Belmoment.cs" />
+    <Compile Include="Database\Factuur.cs" />
+    <Compile Include="Database\KlantAbbonoment.cs" />
+    <Compile Include="Database\Melding.cs" />
+    <Compile Include="Database\Verbruik.cs" />
     <Compile Include="Views\Connecting.xaml.cs">
       <DependentUpon>Connecting.xaml</DependentUpon>
     </Compile>
