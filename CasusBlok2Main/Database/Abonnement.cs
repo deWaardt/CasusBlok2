@@ -8,7 +8,7 @@ namespace CasusBlok2Main.Database
 {
     class Abonnement
     {
-        public int abbonementid { get; set; }
+        public int abonnementid { get; set; }
         public string naam { get; set; }
         public int prijs { get; set; }
         public int type { get; set; }

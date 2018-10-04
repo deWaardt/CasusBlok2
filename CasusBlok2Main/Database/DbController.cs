@@ -31,7 +31,7 @@ namespace CasusBlok2Main.Database
                 conn = new MySqlConnection(cs);
                 conn.Open();
 
-                string stm = "SELECT * FROM Users";
+                string stm = "SELECT * FROM Klant";
                 MySqlCommand cmd = new MySqlCommand(stm, conn);
                 rdr = cmd.ExecuteReader();
 
@@ -320,7 +320,7 @@ namespace CasusBlok2Main.Database
 
                 while (rdr.Read())
                 {
-                    toReturn.abbonementid = rdr.GetInt32(0);
+                    toReturn.abonnementid = rdr.GetInt32(0);
                     toReturn.naam = rdr.GetString(1);
                     toReturn.prijs = rdr.GetInt32(2);
                     toReturn.type = rdr.GetInt32(3);
@@ -393,6 +393,358 @@ namespace CasusBlok2Main.Database
                 toAdd.notitie = notities[i];
                 toReturn.Add(toAdd);
                 i++;
+            }
+
+
+            return toReturn;
+        }
+
+        public Factuur getFactuur(int factuurnummer)
+        {
+            Factuur toReturn = new Factuur();
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Factuur WHERE factuurnummer = " + factuurnummer.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    toReturn.factuurnummer = rdr.GetInt32(0);
+                    toReturn.rekeningnummer = rdr.GetInt32(1);
+                    toReturn.periode = rdr.GetString(2);
+                    toReturn.klantid = rdr.GetInt32(3);
+                    toReturn.status = rdr.GetInt16(4);
+                    toReturn.meterstand = rdr.GetInt32(5);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+            return toReturn;
+        }
+
+        public List<Factuur> getAllFacturenVanKlant(int klantid = -1)
+        {
+            if (klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+
+            List<int> factuurnummers = new List<int>();
+            List<int> rekeningnummers = new List<int>();
+            List<string> periodes = new List<string>();
+            List<int> klantids = new List<int>();
+            List<int> statussen = new List<int>();
+            List<int> meterstanden = new List<int>();
+            List<Factuur> toReturn = new List<Factuur>();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Factuur WHERE klantid = " + klantid;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    factuurnummers.Add(rdr.GetInt32(0));
+                    rekeningnummers.Add(rdr.GetInt32(1));
+                    periodes.Add(rdr.GetString(2));
+                    klantids.Add(rdr.GetInt16(3));
+                    statussen.Add(rdr.GetInt32(4));
+                    meterstanden.Add(rdr.GetInt32(5));
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in klantids)
+            {
+                Factuur toAdd = new Factuur();
+                toAdd.klantid = a;
+                toAdd.factuurnummer = factuurnummers[i];
+                toAdd.rekeningnummer = rekeningnummers[i];
+                toAdd.status = statussen[i];
+                toAdd.periode = periodes[i];
+                toAdd.rekeningnummer = rekeningnummers[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+
+        public Abonnement getAbonnomentVanKlant(int klantid =-1)
+        {
+            if(klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+            Abonnement toReturn = new Abonnement();
+            KlantAbonnement link = new KlantAbonnement();
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM KlantAbonnement WHERE klantid = " + klantid.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    link.klantid = rdr.GetInt32(0);
+                    link.abonnementid = rdr.GetInt32(1);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Abonnement WHERE abonnementid = " + link.abonnementid.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    toReturn.abonnementid = rdr.GetInt32(0);
+                    toReturn.naam = rdr.GetString(1);
+                    toReturn.prijs = rdr.GetInt32(2);
+                    toReturn.type = rdr.GetInt32(3);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+
+
+
+            return toReturn;
+        }
+
+        public Melding getMelding(int meldingnummer)
+        {
+            Melding toReturn = new Melding();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Melding WHERE meldingnummer = " + meldingnummer.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    toReturn.meldingnummer = rdr.GetInt32(0);
+                    toReturn.klantid = rdr.GetInt32(1);
+                    toReturn.status = rdr.GetInt32(2);
+                    toReturn.meldingtype = rdr.GetInt32(3);
+                    toReturn.data = rdr.GetString(3);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            return toReturn;
+        }
+
+        public List<Melding> getAllMeldingen()
+        {
+            List<int> meldingnummrs = new List<int>();
+            List<int> klantids = new List<int>();
+            List<int> statussen = new List<int>();
+            List<int> meldingtypes = new List<int>();
+            List<string> datas = new List<string>();
+            List<Melding> toReturn = new List<Melding>();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Melding";
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    meldingnummrs.Add(rdr.GetInt32(0));
+                    klantids.Add(rdr.GetInt32(1));
+                    statussen.Add(rdr.GetInt32(2));
+                    meldingtypes.Add(rdr.GetInt16(3));
+                    datas.Add(rdr.GetString(4));
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in klantids)
+            {
+                Melding toAdd = new Melding();
+                toAdd.klantid = a;
+                toAdd.meldingnummer = meldingnummrs[i];
+                toAdd.status = statussen[i];
+                toAdd.meldingtype = meldingtypes[i];
+                toAdd.data = datas[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+
+        public List<Melding> getAllMeldingenVanKlant(int klantid = -1)
+        {
+            if(klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+
+            List<int> meldingnummrs = new List<int>();
+            List<int> klantids = new List<int>();
+            List<int> statussen = new List<int>();
+            List<int> meldingtypes = new List<int>();
+            List<string> datas = new List<string>();
+            List<Melding> toReturn = new List<Melding>();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Melding WHERE klantid = " + klantid.ToString();
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    meldingnummrs.Add(rdr.GetInt32(0));
+                    klantids.Add(rdr.GetInt32(1));
+                    statussen.Add(rdr.GetInt32(2));
+                    meldingtypes.Add(rdr.GetInt16(3));
+                    datas.Add(rdr.GetString(4));
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in klantids)
+            {
+                Melding toAdd = new Melding();
+                toAdd.klantid = a;
+                toAdd.meldingnummer = meldingnummrs[i];
+                toAdd.status = statussen[i];
+                toAdd.meldingtype = meldingtypes[i];
+                toAdd.data = datas[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+
+        public Verbruik getVerbruik(int klantid = -1)
+        {
+            if(klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+
+            Verbruik toReturn = new Verbruik();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Verbruik WHERE klantid = " + klantid.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    toReturn.klantid = rdr.GetInt32(0);
+                    toReturn.meterstand = rdr.GetInt32(1);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
             }
 
 
