@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CasusBlok2Main.Views"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800">
     <Grid>
@@ -16,6 +17,5 @@
         <Button x:Name="KlachtenVragenBtn" Content="Vragen" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Width="75"/>
         <Canvas x:Name="Logo" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="82" Background="#FFA7F110"/>
         <Canvas x:Name="ContentBordr" HorizontalAlignment="Left" Height="312" Margin="46,81,0,0" VerticalAlignment="Top" Width="710" Background="#FFBFB7B7"/>
-
     </Grid>
 </Window>

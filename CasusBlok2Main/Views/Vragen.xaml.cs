@@ -26,10 +26,53 @@ namespace CasusBlok2Main.Views
 
         private void VraagstelBtn_Click(object sender, RoutedEventArgs e)
         {
+            VraagLbl.Visibility = Visibility.Visible;
+            VraagTxtbx.Visibility = Visibility.Visible;
+            VerstuurBtn.Visibility = Visibility.Visible;
+            ToelichtingLbl.Visibility = Visibility.Visible;
+            FAQLbl.Visibility = Visibility.Hidden;
+            KlachtBtn.Visibility = Visibility.Visible;
+            KlachtLbl.Visibility = Visibility.Hidden;
+            KlachtTxtbx.Visibility = Visibility.Hidden;
+            KlachtVerstuurBtn.Visibility = Visibility.Hidden;
+            Dropdownboxcatagorie.Visibility = Visibility.Hidden;
+            KlachttoelichtingLbl.Visibility = Visibility.Hidden;
+            
+        }
+
+        private void FAQBtn_Click(object sender, RoutedEventArgs e)
+        {
             VraagLbl.Visibility = Visibility.Hidden;
             VraagTxtbx.Visibility = Visibility.Hidden;
             VerstuurBtn.Visibility = Visibility.Hidden;
             ToelichtingLbl.Visibility = Visibility.Hidden;
+            FAQLbl.Visibility = Visibility.Visible;
+            KlachtBtn.Visibility = Visibility.Visible;
+            KlachtLbl.Visibility = Visibility.Hidden;
+            KlachtTxtbx.Visibility = Visibility.Hidden;
+            KlachtVerstuurBtn.Visibility = Visibility.Hidden;
+            Dropdownboxcatagorie.Visibility = Visibility.Hidden;
+            KlachttoelichtingLbl.Visibility = Visibility.Hidden;
+        }
+
+        private void KlachtBtn_Click(object sender, RoutedEventArgs e)
+        {
+            VraagLbl.Visibility = Visibility.Hidden;
+            VraagTxtbx.Visibility = Visibility.Hidden;
+            VerstuurBtn.Visibility = Visibility.Hidden;
+            ToelichtingLbl.Visibility = Visibility.Hidden;
+            FAQLbl.Visibility = Visibility.Hidden;
+            KlachtBtn.Visibility = Visibility.Visible;
+            KlachtLbl.Visibility = Visibility.Visible;
+            KlachtTxtbx.Visibility = Visibility.Visible;
+            KlachtVerstuurBtn.Visibility = Visibility.Visible;
+            Dropdownboxcatagorie.Visibility = Visibility.Visible;
+            KlachttoelichtingLbl.Visibility = Visibility.Visible;
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
         }
     }
