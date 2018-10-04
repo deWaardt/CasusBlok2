@@ -78,6 +78,9 @@
     <Compile Include="Views\Connecting.xaml.cs">
       <DependentUpon>Connecting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\loginIncorrect.xaml.cs">
+      <DependentUpon>loginIncorrect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Connecting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\loginIncorrect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
