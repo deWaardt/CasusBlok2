@@ -22,6 +22,7 @@ namespace CasusBlok2Main.Views
     public partial class loginWindow : Window
     {
         DbController db;
+        loginIncorrect fout;
         public loginWindow()
         {
             InitializeComponent();
@@ -31,20 +32,78 @@ namespace CasusBlok2Main.Views
             pls.Close();
         }
 
+        private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.IsEnabled = true;
+            this.Focusable = true;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string name = usrname.Text;
             string pass = password.Text;
 
-            User loginuser = db.getUser(name);
-            if (pass == loginuser.password)
+            if (name == "" || name == "") { return; }
+            Klant loginuser = db.getUser(name);
+            
+            if (pass == loginuser.wachtwoord)
             {
                 Console.WriteLine("Login success");
                 Mainframe.currentLoggedIn = loginuser;
                 Mainframe.whoLoggedIn();
+                //Open main window
+                this.Close();
             }
 
-            else { Console.WriteLine("Login unsuccesfull"); }
+            else
+            {
+                fout = new loginIncorrect();
+                fout.Closing += Fout_Closing;
+                fout.Show();
+                this.IsEnabled = false;
+                this.Focusable = false;
+                
+            }
+
+            //else { Console.WriteLine("Login unsuccesfull"); }
+
+            ////Test getAanvraag;
+            //Aanvraag aanvraag = db.getAanvraag(1);
+            //Console.WriteLine(aanvraag.data);
+
+            ////Test getAllAanvraagVanKlant;
+            //List<Aanvraag> allAanvraag = db.getAllAanvragenVanKlant(1);
+            //Console.WriteLine(allAanvraag[1].data);
+
+            ////Test getAllBelmomentenVanKlant;
+            //List<Belmoment> allBelMomenten = db.getAllBelmomentenVanKlant(1);
+            //Console.WriteLine(allBelMomenten[0].notitie);
+
+            //Factuur factuur = db.getFactuur(1);
+            //Console.WriteLine(factuur.periode);
+
+            //List<Factuur> facturen = db.getAllFacturenVanKlant(1);
+            //Console.WriteLine(facturen[0].periode);
+
+            //Abonnement abonnement = db.getAbonnomentVanKlant(1);
+            //Console.WriteLine(abonnement.naam);
+
+            //Abonnement abonnement2 = db.getAbonnement(1);
+            //Console.WriteLine(abonnement2.naam);
+
+            //Melding melding = db.getMelding(1);
+            //Console.WriteLine(melding.data);
+
+            //List<Melding> meldingen = db.getAllMeldingen();
+            //Console.WriteLine(meldingen[0].data);
+
+            //List<Melding> meldingen2 = db.getAllMeldingenVanKlant(1);
+            //Console.WriteLine(meldingen2[0].data);
+
+            //Verbruik verbruik = db.getVerbruik(1);
+            //Console.WriteLine(verbruik.klantid);
+
+
         }
     }
 }
