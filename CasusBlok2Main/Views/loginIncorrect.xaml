@@ -1,0 +1,17 @@
+﻿<Window x:Class="CasusBlok2Main.Views.loginIncorrect"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CasusBlok2Main.Views"
+        mc:Ignorable="d"
+        Title="loginIncorrect" Height="219.327" Width="443.697">
+    <Grid>
+        <Label HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top">
+            <Label Content="E-mail of wachtwoord incorrect of niet bekend.&#xD;&#xA;&#xD;&#xA;Als U uw logingegevens niet meer weet, of deze fout zich&#xD;&#xA;blijft herhalen neem dan contact op met de klantenservice." HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Label>
+        <Button Content="OK" HorizontalAlignment="Center" Margin="0
+                ,134,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+    </Grid>
+</Window>

@@ -78,8 +78,13 @@
     <Compile Include="Views\Connecting.xaml.cs">
       <DependentUpon>Connecting.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+=======
+    <Compile Include="Views\loginIncorrect.xaml.cs">
+      <DependentUpon>loginIncorrect.xaml</DependentUpon>
+>>>>>>> master
     </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
@@ -105,7 +110,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
     <Page Include="Views\Home.xaml">
+=======
+    <Page Include="Views\loginIncorrect.xaml">
+>>>>>>> master
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

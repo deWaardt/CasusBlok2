@@ -22,6 +22,7 @@ namespace CasusBlok2Main.Views
     public partial class loginWindow : Window
     {
         DbController db;
+        loginIncorrect fout;
         public loginWindow()
         {
             InitializeComponent();
@@ -31,18 +32,38 @@ namespace CasusBlok2Main.Views
             pls.Close();
         }
 
+        private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            this.IsEnabled = true;
+            this.Focusable = true;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //string name = usrname.Text;
-            //string pass = password.Text;
+            string name = usrname.Text;
+            string pass = password.Text;
 
-            //Klant loginuser = db.getUser(name);
-            //if (pass == loginuser.wachtwoord)
-            //{
-            //    Console.WriteLine("Login success");
-            //    Mainframe.currentLoggedIn = loginuser;
-            //    Mainframe.whoLoggedIn();
-            //}
+            if (name == "" || name == "") { return; }
+            Klant loginuser = db.getUser(name);
+            
+            if (pass == loginuser.wachtwoord)
+            {
+                Console.WriteLine("Login success");
+                Mainframe.currentLoggedIn = loginuser;
+                Mainframe.whoLoggedIn();
+                //Open main window
+                this.Close();
+            }
+
+            else
+            {
+                fout = new loginIncorrect();
+                fout.Closing += Fout_Closing;
+                fout.Show();
+                this.IsEnabled = false;
+                this.Focusable = false;
+                
+            }
 
             //else { Console.WriteLine("Login unsuccesfull"); }
 

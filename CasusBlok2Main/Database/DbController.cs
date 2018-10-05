@@ -145,21 +145,21 @@ namespace CasusBlok2Main.Database
         /// <returns>Een "Klant" object van de opgevraagde gebruiker</returns>
         public Klant getUser(string usrname)
         {
-            List<int> klantid = new List<int>();
-            List<string> email = new List<string>();
-            List<string> wachtwoord = new List<string>();
-            List<string> voornaam = new List<string>();
-            List<string> tussenvoegsel = new List<string>();
-            List<string> achternaam = new List<string>();
-            List<string> geboortedatum = new List<string>();
-            List<string> telefoonnummer = new List<string>();
-
+            //List<int> klantid = new List<int>();
+            //List<string> email = new List<string>();
+            //List<string> wachtwoord = new List<string>();
+            //List<string> voornaam = new List<string>();
+            //List<string> tussenvoegsel = new List<string>();
+            //List<string> achternaam = new List<string>();
+            //List<string> geboortedatum = new List<string>();
+            //List<string> telefoonnummer = new List<string>();
+            Klant toReturn = new Klant();
 
             try
             {
                 conn = new MySqlConnection(cs);
                 conn.Open();
-
+                
                 string stm = "SELECT * FROM Klant WHERE email = '" + usrname + "'";
                 MySqlCommand cmd = new MySqlCommand(stm, conn);
                 rdr = cmd.ExecuteReader();
@@ -167,14 +167,14 @@ namespace CasusBlok2Main.Database
                 while (rdr.Read())
                 {
                     //console.writeline(rdr.getstring(1));
-                    klantid.Add(rdr.GetInt32(0));
-                    email.Add(rdr.GetString(1));
-                    wachtwoord.Add(rdr.GetString(2));
-                    voornaam.Add(rdr.GetString(3));
-                    tussenvoegsel.Add(rdr.GetString(4));
-                    achternaam.Add(rdr.GetString(5));
-                    geboortedatum.Add(rdr.GetString(6));
-                    telefoonnummer.Add(rdr.GetString(7));
+                    toReturn.klantid = (rdr.GetInt32(0));
+                    toReturn.email = (rdr.GetString(1));
+                    toReturn.wachtwoord = (rdr.GetString(2));
+                    toReturn.voornaam = (rdr.GetString(3));
+                    toReturn.tussenvoegsel = (rdr.GetString(4));
+                    toReturn.achternaam = (rdr.GetString(5));
+                    toReturn.geboortedatum = (rdr.GetString(6));
+                    toReturn.telefoonnummer = (rdr.GetString(7));
 
                 }
 
@@ -185,24 +185,8 @@ namespace CasusBlok2Main.Database
                 if (rdr != null) { rdr.Close(); }
                 if (conn != null) { conn.Close(); }
             }
-            if (klantid.Count == 0)
-            {
-                throw new Exception("No user found");
-                Klant nullReturn = new Klant();
-                return nullReturn;
-            }
 
-            Klant toReturn = new Klant
-            {
-                klantid = klantid[0],
-                email = email[0],
-                wachtwoord = wachtwoord[0],
-                voornaam = voornaam[0],
-                tussenvoegsel = tussenvoegsel[0],
-                achternaam = achternaam[0],
-                geboortedatum = geboortedatum[0],
-                telefoonnummer = telefoonnummer[0]
-            };
+            
             return toReturn;
         }
 

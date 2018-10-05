@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CasusBlok2Main.Views"
         mc:Ignorable="d"
-        Title="Connecting" Height="300" Width="300">
+        Title="Connecting" Height="173.109" Width="300">
     <Grid>
-        <Label Content="Connecting please wait" HorizontalAlignment="Left" Margin="78,116,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bezig met verbinding maken&#xD;&#xA;Een ogenblik geduld AUB..." HorizontalAlignment="Center" Margin="0,24,0,0" VerticalAlignment="Top"/>
+        <ProgressBar HorizontalAlignment="Center" Height="21" VerticalAlignment="Center" Margin="0,50,0,0" Width="123" Value="60"/>
 
     </Grid>
 </Window>
