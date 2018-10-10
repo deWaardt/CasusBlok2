@@ -12,6 +12,7 @@ namespace CasusBlok2Main.Database
         public int rekeningnummer { get; set; }
         public string periode { get; set; } //ander objecttype bedenken
         public int klantid { get; set; }
+        public int kosten { get; set; }
         public int status { get; set; }
         public int meterstand { get; set; }
     }

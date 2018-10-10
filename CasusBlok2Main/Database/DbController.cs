@@ -159,7 +159,7 @@ namespace CasusBlok2Main.Database
             {
                 conn = new MySqlConnection(cs);
                 conn.Open();
-                
+
                 string stm = "SELECT * FROM Klant WHERE email = '" + usrname + "'";
                 MySqlCommand cmd = new MySqlCommand(stm, conn);
                 rdr = cmd.ExecuteReader();
@@ -186,7 +186,7 @@ namespace CasusBlok2Main.Database
                 if (conn != null) { conn.Close(); }
             }
 
-            
+
             return toReturn;
         }
 
@@ -480,9 +480,9 @@ namespace CasusBlok2Main.Database
             return toReturn;
         }
 
-        public Abonnement getAbonnomentVanKlant(int klantid =-1)
+        public Abonnement getAbonnomentVanKlant(int klantid = -1)
         {
-            if(klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+            if (klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
             Abonnement toReturn = new Abonnement();
             KlantAbonnement link = new KlantAbonnement();
             try
@@ -642,7 +642,7 @@ namespace CasusBlok2Main.Database
 
         public List<Melding> getAllMeldingenVanKlant(int klantid = -1)
         {
-            if(klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+            if (klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
 
             List<int> meldingnummrs = new List<int>();
             List<int> klantids = new List<int>();
@@ -700,7 +700,7 @@ namespace CasusBlok2Main.Database
 
         public Verbruik getVerbruik(int klantid = -1)
         {
-            if(klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+            if (klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
 
             Verbruik toReturn = new Verbruik();
 
@@ -733,6 +733,245 @@ namespace CasusBlok2Main.Database
 
 
             return toReturn;
+        }
+
+        public Klacht getKlacht(int klachtid)
+        {
+            Klacht toReturn = new Klacht();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Klacht WHERE klachtid = " + klachtid.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    toReturn.klachtid = rdr.GetInt32(0);
+                    toReturn.klantid = rdr.GetInt32(1);
+                    toReturn.klachttype = rdr.GetInt32(2);
+                    toReturn.data = rdr.GetString(3);
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+
+            return toReturn;
+        }
+
+        public List<Klacht> getAllKlachten()
+        {
+            List<int> klachtids = new List<int>();
+            List<int> klantids = new List<int>();
+            List<int> klachttypes = new List<int>();
+            List<string> datas = new List<string>();
+            List<Klacht> toReturn = new List<Klacht>();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Klacht";
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    klachtids.Add(rdr.GetInt32(0));
+                    klantids.Add(rdr.GetInt32(1));
+                    klachttypes.Add(rdr.GetInt32(2));
+                    datas.Add(rdr.GetString(4));
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in klantids)
+            {
+                Klacht toAdd = new Klacht();
+                toAdd.klantid = a;
+                toAdd.klachtid = klantids[i];
+                toAdd.klachttype = klachttypes[i];
+                toAdd.data = datas[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+
+        public List<Klacht> getAllKlachtenVanKlant(int klantid = -1)
+        {
+            if (klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
+
+            List<int> klachtids = new List<int>();
+            List<int> klantids = new List<int>();
+            List<int> klachttypes = new List<int>();
+            List<string> datas = new List<string>();
+            List<Klacht> toReturn = new List<Klacht>();
+
+            try
+            {
+                conn = new MySqlConnection(cs);
+                conn.Open();
+
+                string stm = "SELECT * FROM Klacht WHERE klantid = " + klantid.ToString(); ;
+                MySqlCommand cmd = new MySqlCommand(stm, conn);
+                rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    klachtids.Add(rdr.GetInt32(0));
+                    klantids.Add(rdr.GetInt32(1));
+                    klachttypes.Add(rdr.GetInt32(2));
+                    datas.Add(rdr.GetString(4));
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (rdr != null) { rdr.Close(); }
+                if (conn != null) { conn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in klantids)
+            {
+                Klacht toAdd = new Klacht();
+                toAdd.klantid = a;
+                toAdd.klachtid = klantids[i];
+                toAdd.klachttype = klachttypes[i];
+                toAdd.data = datas[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+
+        //=============================================================
+
+        public void pushKlant(Klant usr)
+        {
+            string stm = "INSERT INTO Klant (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('"+usr.email + "','" + usr.wachtwoord+"','"+usr.voornaam + "','" +usr.tussenvoegsel
+                + "','" +usr.achternaam + "','" +usr.geboortedatum + "','" +usr.telefoonnummer+"')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushAanvraag(Aanvraag aanvraag)
+        {
+            string stm = "INSERT INTO Aanvraag (aanvraagtype, klantid, data) VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushBelmoment(Belmoment belmoment)
+        {
+            string stm = "INSERT INTO Belmoment (klantid, tijstip, datum, status, notitie) VALUES('" + belmoment.klantid + "','" + belmoment.tijdstip + "','" + belmoment.datum + "','" +
+                belmoment.status + "','" + belmoment.notitie + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushFactuur(Factuur factuur)
+        {
+            string stm = "INSERT INTO Factuur (rekeningnummer, periode, klantid, kosten, status, meterstand) VALUES('" + factuur.rekeningnummer + "','" + factuur.periode + "','" +
+                factuur.klantid + "','" + factuur.kosten + "','" + factuur.status + "','" + factuur.meterstand + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushKlacht(Klacht klacht)
+        {
+            string stm = "INSERT INTO Klacht (klantid, klachttype, data) VALUES('" + klacht.klantid + "','" + klacht.klachttype + "','" + klacht.data + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushKlantAbonnement(KlantAbonnement ka)
+        {
+            string stm = "INSERT INTO KlantAbonnement (klantid, abonnementid) VALUES('" + ka.klantid + "','" + ka.abonnementid + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushMelding(Melding melding)
+        {
+            string stm = "INSERT INTO Melding (klantid, status, meldingtype, data) VALUES('" + melding.klantid + "','" + melding.status + "','" +
+                melding.meldingtype + "','" + melding.data + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void pushVerbruik(Verbruik verbruik)
+        {
+            string stm = "INSERT INTO Verbruik (klantid, meterstand) VALUES('" + verbruik.klantid + "','" + verbruik.meterstand + "')";
+
+            conn = new MySqlConnection(cs);
+            conn.Open();
+
+            MySqlCommand cmd = new MySqlCommand(stm, conn);
+            cmd.ExecuteNonQuery();
         }
     }
 }
