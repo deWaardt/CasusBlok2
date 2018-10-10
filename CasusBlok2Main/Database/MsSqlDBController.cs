@@ -7,35 +7,70 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using CasusBlok2Main.Main;
 
+using System.Data;
+using System.Data.SqlClient;
+
 namespace CasusBlok2Main.Database
 {
-    class DbController
+    class MsSqlDBController
     {
-        public string cs = @"server=84.28.62.177;port=33060;userid=admin;
-            password=casus;database=casusblok2;sslmode=none;";
+        //public string cs = @"server=84.28.62.177;port=33060;userid=admin;
+        //    password=casus;database=casusblok2;sslmode=none;";
+        public string cs = "Server = 84.28.62.177,33061; Database = casusge; User Id = Admin; Password = CasusBlok2@";
 
-        public MySqlConnection conn = null;
-        public MySqlDataReader rdr = null;
 
-        public DbController()
+
+        public SqlDataReader msrdr = null;
+        public SqlConnection cnn = null;
+
+        public MsSqlDBController()
         {
+            return;
             bool connection = testConnection();
             if (connection == false) { Console.WriteLine("No connection could be made!"); }
             else { Console.WriteLine("Succesfully connected."); }
+        }
+
+        public void TestMS()
+        {
+            try
+            {
+                
+                cnn = new SqlConnection(cs);
+                cnn.Open();
+
+                string stm = "SELECT * FROM Klant";
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
+
+                while (msrdr.Read())
+                {
+                    Console.WriteLine(msrdr[2]);
+                }
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine("SQL Exception occured");
+            }
+            finally
+            {
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
+            }
         }
 
         bool testConnection()
         {
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Klant";
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
                 }
 
@@ -46,8 +81,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
             return true;
         }
@@ -60,19 +95,19 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Users";
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    //Console.WriteLine(rdr.GetString(1));
-                    column1.Add(rdr.GetString(0));
-                    column2.Add(rdr.GetString(1));
-                    column3.Add(rdr.GetString(2));
+                    //Console.WriteLine(msrdr.GetString(1));
+                    column1.Add(msrdr.GetString(0));
+                    column2.Add(msrdr.GetString(1));
+                    column3.Add(msrdr.GetString(2));
 
                 }
 
@@ -84,14 +119,14 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null)
+                if (msrdr != null)
                 {
-                    rdr.Close();
+                    msrdr.Close();
                 }
 
-                if (conn != null)
+                if (cnn != null)
                 {
-                    conn.Close();
+                    cnn.Close();
                 }
 
             }
@@ -109,19 +144,19 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Users";
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    //Console.WriteLine(rdr.GetString(1));
-                    column1.Add(rdr.GetString(0));
-                    column2.Add(rdr.GetString(1));
-                    column3.Add(rdr.GetString(2));
+                    //Console.WriteLine(msrdr.GetString(1));
+                    column1.Add(msrdr.GetString(0));
+                    column2.Add(msrdr.GetString(1));
+                    column3.Add(msrdr.GetString(2));
 
                 }
 
@@ -129,8 +164,8 @@ namespace CasusBlok2Main.Database
             catch (MySqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             Console.WriteLine(column1[0]);
@@ -157,24 +192,24 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Klant WHERE email = '" + usrname + "'";
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    //console.writeline(rdr.getstring(1));
-                    toReturn.klantid = (rdr.GetInt32(0));
-                    toReturn.email = (rdr.GetString(1));
-                    toReturn.wachtwoord = (rdr.GetString(2));
-                    toReturn.voornaam = (rdr.GetString(3));
-                    toReturn.tussenvoegsel = (rdr.GetString(4));
-                    toReturn.achternaam = (rdr.GetString(5));
-                    toReturn.geboortedatum = (rdr.GetString(6));
-                    toReturn.telefoonnummer = (rdr.GetString(7));
+                    //console.writeline(msrdr.getstring(1));
+                    toReturn.klantid = (msrdr.GetInt32(0));
+                    toReturn.email = (msrdr.GetString(1));
+                    toReturn.wachtwoord = (msrdr.GetString(2));
+                    toReturn.voornaam = (msrdr.GetString(3));
+                    toReturn.tussenvoegsel = (msrdr.GetString(4));
+                    toReturn.achternaam = (msrdr.GetString(5));
+                    toReturn.geboortedatum = (msrdr.GetString(6));
+                    toReturn.telefoonnummer = (msrdr.GetString(7));
 
                 }
 
@@ -182,8 +217,8 @@ namespace CasusBlok2Main.Database
             catch (MySqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); throw new Exception(); }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
 
@@ -200,19 +235,19 @@ namespace CasusBlok2Main.Database
             Aanvraag toReturn = new Aanvraag();
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Aanvraag WHERE aanvraagnummer = " + aanvraagnr.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.aanvraagnummer = rdr.GetInt32(0);
-                    toReturn.aanvraagtype = rdr.GetInt32(1);
-                    toReturn.klantid = rdr.GetInt32(2);
-                    toReturn.data = rdr.GetString(3);
+                    toReturn.aanvraagnummer = msrdr.GetInt32(0);
+                    toReturn.aanvraagtype = msrdr.GetInt32(1);
+                    toReturn.klantid = msrdr.GetInt32(2);
+                    toReturn.data = msrdr.GetString(3);
                 }
 
             }
@@ -223,8 +258,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
             return toReturn;
         }
@@ -247,19 +282,19 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Aanvraag WHERE klantid = " + klantid;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    aanvraagnummers.Add(rdr.GetInt32(0));
-                    aanvraagtypes.Add(rdr.GetInt32(1));
-                    klantids.Add(rdr.GetInt32(2));
-                    datas.Add(rdr.GetString(3));
+                    aanvraagnummers.Add(msrdr.GetInt32(0));
+                    aanvraagtypes.Add(msrdr.GetInt32(1));
+                    klantids.Add(msrdr.GetInt32(2));
+                    datas.Add(msrdr.GetString(3));
                 }
 
             }
@@ -270,8 +305,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -295,19 +330,19 @@ namespace CasusBlok2Main.Database
             Abonnement toReturn = new Abonnement();
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Abonnement WHERE abonnementid = " + abonnementid.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.abonnementid = rdr.GetInt32(0);
-                    toReturn.naam = rdr.GetString(1);
-                    toReturn.prijs = rdr.GetInt32(2);
-                    toReturn.type = rdr.GetInt32(3);
+                    toReturn.abonnementid = msrdr.GetInt32(0);
+                    toReturn.naam = msrdr.GetString(1);
+                    toReturn.prijs = msrdr.GetInt32(2);
+                    toReturn.type = msrdr.GetInt32(3);
                 }
 
             }
@@ -318,8 +353,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
             return toReturn;
 
@@ -338,20 +373,20 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Belmoment WHERE klantid = " + klantid;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    klantids.Add(rdr.GetInt32(0));
-                    tijdstippen.Add(rdr.GetString(1));
-                    datums.Add(rdr.GetString(2));
-                    statussen.Add(rdr.GetInt32(3));
-                    notities.Add(rdr.GetString(4));
+                    klantids.Add(msrdr.GetInt32(0));
+                    tijdstippen.Add(msrdr.GetString(1));
+                    datums.Add(msrdr.GetString(2));
+                    statussen.Add(msrdr.GetInt32(3));
+                    notities.Add(msrdr.GetString(4));
                 }
 
             }
@@ -362,8 +397,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -388,22 +423,22 @@ namespace CasusBlok2Main.Database
             Factuur toReturn = new Factuur();
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Factuur WHERE factuurnummer = " + factuurnummer.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.factuurnummer = rdr.GetInt32(0);
-                    toReturn.rekeningnummer = rdr.GetInt32(1);
-                    toReturn.periode = rdr.GetString(2);
-                    toReturn.klantid = rdr.GetInt32(3);
-                    toReturn.kosten = rdr.GetInt32(4);
-                    toReturn.status = rdr.GetInt16(5);
-                    toReturn.meterstand = rdr.GetInt32(6);
+                    toReturn.factuurnummer = msrdr.GetInt32(0);
+                    toReturn.rekeningnummer = msrdr.GetInt32(1);
+                    toReturn.periode = msrdr.GetString(2);
+                    toReturn.klantid = msrdr.GetInt32(3);
+                    toReturn.kosten = msrdr.GetInt32(4);
+                    toReturn.status = msrdr.GetInt16(5);
+                    toReturn.meterstand = msrdr.GetInt32(6);
                 }
 
             }
@@ -414,8 +449,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
             return toReturn;
         }
@@ -435,22 +470,22 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Factuur WHERE klantid = " + klantid;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    factuurnummers.Add(rdr.GetInt32(0));
-                    rekeningnummers.Add(rdr.GetInt32(1));
-                    periodes.Add(rdr.GetString(2));
-                    klantids.Add(rdr.GetInt16(3));
-                    kostenen.Add(rdr.GetInt32(4));
-                    statussen.Add(rdr.GetInt32(5));
-                    meterstanden.Add(rdr.GetInt32(6));
+                    factuurnummers.Add(msrdr.GetInt32(0));
+                    rekeningnummers.Add(msrdr.GetInt32(1));
+                    periodes.Add(msrdr.GetString(2));
+                    klantids.Add(msrdr.GetInt16(3));
+                    kostenen.Add(msrdr.GetInt32(4));
+                    statussen.Add(msrdr.GetInt32(5));
+                    meterstanden.Add(msrdr.GetInt32(6));
                 }
 
             }
@@ -461,8 +496,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -491,17 +526,17 @@ namespace CasusBlok2Main.Database
             KlantAbonnement link = new KlantAbonnement();
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM KlantAbonnement WHERE klantid = " + klantid.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    link.klantid = rdr.GetInt32(0);
-                    link.abonnementid = rdr.GetInt32(1);
+                    link.klantid = msrdr.GetInt32(0);
+                    link.abonnementid = msrdr.GetInt32(1);
                 }
 
             }
@@ -512,25 +547,25 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Abonnement WHERE abonnementid = " + link.abonnementid.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.abonnementid = rdr.GetInt32(0);
-                    toReturn.naam = rdr.GetString(1);
-                    toReturn.prijs = rdr.GetInt32(2);
-                    toReturn.type = rdr.GetInt32(3);
+                    toReturn.abonnementid = msrdr.GetInt32(0);
+                    toReturn.naam = msrdr.GetString(1);
+                    toReturn.prijs = msrdr.GetInt32(2);
+                    toReturn.type = msrdr.GetInt32(3);
                 }
 
             }
@@ -541,8 +576,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
 
@@ -557,20 +592,20 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Melding WHERE meldingnummer = " + meldingnummer.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.meldingnummer = rdr.GetInt32(0);
-                    toReturn.klantid = rdr.GetInt32(1);
-                    toReturn.status = rdr.GetInt32(2);
-                    toReturn.meldingtype = rdr.GetInt32(3);
-                    toReturn.data = rdr.GetString(3);
+                    toReturn.meldingnummer = msrdr.GetInt32(0);
+                    toReturn.klantid = msrdr.GetInt32(1);
+                    toReturn.status = msrdr.GetInt32(2);
+                    toReturn.meldingtype = msrdr.GetInt32(3);
+                    toReturn.data = msrdr.GetString(3);
                 }
 
             }
@@ -581,8 +616,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             return toReturn;
@@ -599,20 +634,20 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Melding";
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    meldingnummrs.Add(rdr.GetInt32(0));
-                    klantids.Add(rdr.GetInt32(1));
-                    statussen.Add(rdr.GetInt32(2));
-                    meldingtypes.Add(rdr.GetInt16(3));
-                    datas.Add(rdr.GetString(4));
+                    meldingnummrs.Add(msrdr.GetInt32(0));
+                    klantids.Add(msrdr.GetInt32(1));
+                    statussen.Add(msrdr.GetInt32(2));
+                    meldingtypes.Add(msrdr.GetInt16(3));
+                    datas.Add(msrdr.GetString(4));
                 }
 
             }
@@ -623,8 +658,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -657,20 +692,20 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Melding WHERE klantid = " + klantid.ToString();
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    meldingnummrs.Add(rdr.GetInt32(0));
-                    klantids.Add(rdr.GetInt32(1));
-                    statussen.Add(rdr.GetInt32(2));
-                    meldingtypes.Add(rdr.GetInt16(3));
-                    datas.Add(rdr.GetString(4));
+                    meldingnummrs.Add(msrdr.GetInt32(0));
+                    klantids.Add(msrdr.GetInt32(1));
+                    statussen.Add(msrdr.GetInt32(2));
+                    meldingtypes.Add(msrdr.GetInt16(3));
+                    datas.Add(msrdr.GetString(4));
                 }
 
             }
@@ -681,8 +716,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -710,17 +745,17 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Verbruik WHERE klantid = " + klantid.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.klantid = rdr.GetInt32(0);
-                    toReturn.meterstand = rdr.GetInt32(1);
+                    toReturn.klantid = msrdr.GetInt32(0);
+                    toReturn.meterstand = msrdr.GetInt32(1);
                 }
 
             }
@@ -731,8 +766,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
 
@@ -745,19 +780,19 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Klacht WHERE klachtid = " + klachtid.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    toReturn.klachtid = rdr.GetInt32(0);
-                    toReturn.klantid = rdr.GetInt32(1);
-                    toReturn.klachttype = rdr.GetInt32(2);
-                    toReturn.data = rdr.GetString(3);
+                    toReturn.klachtid = msrdr.GetInt32(0);
+                    toReturn.klantid = msrdr.GetInt32(1);
+                    toReturn.klachttype = msrdr.GetInt32(2);
+                    toReturn.data = msrdr.GetString(3);
                 }
 
             }
@@ -768,8 +803,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
 
@@ -786,19 +821,19 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Klacht";
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    klachtids.Add(rdr.GetInt32(0));
-                    klantids.Add(rdr.GetInt32(1));
-                    klachttypes.Add(rdr.GetInt32(2));
-                    datas.Add(rdr.GetString(4));
+                    klachtids.Add(msrdr.GetInt32(0));
+                    klantids.Add(msrdr.GetInt32(1));
+                    klachttypes.Add(msrdr.GetInt32(2));
+                    datas.Add(msrdr.GetString(4));
                 }
 
             }
@@ -809,8 +844,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -841,19 +876,19 @@ namespace CasusBlok2Main.Database
 
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
+                cnn = new SqlConnection(cs);
+                cnn.Open();
 
                 string stm = "SELECT * FROM Klacht WHERE klantid = " + klantid.ToString(); ;
-                MySqlCommand cmd = new MySqlCommand(stm, conn);
-                rdr = cmd.ExecuteReader();
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
 
-                while (rdr.Read())
+                while (msrdr.Read())
                 {
-                    klachtids.Add(rdr.GetInt32(0));
-                    klantids.Add(rdr.GetInt32(1));
-                    klachttypes.Add(rdr.GetInt32(2));
-                    datas.Add(rdr.GetString(3));
+                    klachtids.Add(msrdr.GetInt32(0));
+                    klantids.Add(msrdr.GetInt32(1));
+                    klachttypes.Add(msrdr.GetInt32(2));
+                    datas.Add(msrdr.GetString(3));
                 }
 
             }
@@ -864,8 +899,8 @@ namespace CasusBlok2Main.Database
             }
             finally
             {
-                if (rdr != null) { rdr.Close(); }
-                if (conn != null) { conn.Close(); }
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
             }
 
             int i = 0;
@@ -891,22 +926,22 @@ namespace CasusBlok2Main.Database
             string stm = "INSERT INTO Klant (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('"+usr.email + "','" + usr.wachtwoord+"','"+usr.voornaam + "','" +usr.tussenvoegsel
                 + "','" +usr.achternaam + "','" +usr.geboortedatum + "','" +usr.telefoonnummer+"')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushAanvraag(Aanvraag aanvraag)
         {
             string stm = "INSERT INTO Aanvraag (aanvraagtype, klantid, data) VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushBelmoment(Belmoment belmoment)
@@ -914,11 +949,11 @@ namespace CasusBlok2Main.Database
             string stm = "INSERT INTO Belmoment (klantid, tijstip, datum, status, notitie) VALUES('" + belmoment.klantid + "','" + belmoment.tijdstip + "','" + belmoment.datum + "','" +
                 belmoment.status + "','" + belmoment.notitie + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushFactuur(Factuur factuur)
@@ -926,33 +961,33 @@ namespace CasusBlok2Main.Database
             string stm = "INSERT INTO Factuur (rekeningnummer, periode, klantid, kosten, status, meterstand) VALUES('" + factuur.rekeningnummer + "','" + factuur.periode + "','" +
                 factuur.klantid + "','" + factuur.kosten + "','" + factuur.status + "','" + factuur.meterstand + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushKlacht(Klacht klacht)
         {
             string stm = "INSERT INTO Klacht (klantid, klachttype, data) VALUES('" + klacht.klantid + "','" + klacht.klachttype + "','" + klacht.data + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushKlantAbonnement(KlantAbonnement ka)
         {
             string stm = "INSERT INTO KlantAbonnement (klantid, abonnementid) VALUES('" + ka.klantid + "','" + ka.abonnementid + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushMelding(Melding melding)
@@ -960,22 +995,22 @@ namespace CasusBlok2Main.Database
             string stm = "INSERT INTO Melding (klantid, status, meldingtype, data) VALUES('" + melding.klantid + "','" + melding.status + "','" +
                 melding.meldingtype + "','" + melding.data + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void pushVerbruik(Verbruik verbruik)
         {
             string stm = "INSERT INTO Verbruik (klantid, meterstand) VALUES('" + verbruik.klantid + "','" + verbruik.meterstand + "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         //=========================================================================================
@@ -985,11 +1020,11 @@ namespace CasusBlok2Main.Database
             string stm = "UPDATE Klant SET email='" + usr.email + "',wachtwoord='" + usr.wachtwoord + "',voornaam='" + usr.voornaam + "',tussenvoegsel='" + usr.tussenvoegsel
                 + "',achternaam='" + usr.achternaam + "',geboortedatum='" + usr.geboortedatum + "',telefoonnummer='" + usr.telefoonnummer + "' WHERE klantid = '" + usr.klantid + "'";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void editAanvraag(Aanvraag aanvraag)
@@ -997,11 +1032,11 @@ namespace CasusBlok2Main.Database
             string stm = "UPDATE Aanvraag SET aanvraagtype='" + aanvraag.aanvraagtype + "',klantid='" + aanvraag.klantid + "',data='" + aanvraag.data + 
                 "' WHERE aanvraagnummer = '"+aanvraag.aanvraagnummer+"'";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void editBelmoment(Belmoment belmoment)
@@ -1009,11 +1044,11 @@ namespace CasusBlok2Main.Database
             string stm = "UPDATE Belmoment SET klantid='" + belmoment.klantid + "',tijdstip='" + belmoment.tijdstip + "',datum='" + belmoment.datum + "',status='" +
                 belmoment.status + "',notitie='" + belmoment.notitie +"' WHERE (tijdstip = '"+belmoment.tijdstip+"' AND datum = '"+belmoment.datum+"' AND klantid = '"+belmoment.klantid+ "')";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void editFactuur(Factuur factuur)
@@ -1021,11 +1056,11 @@ namespace CasusBlok2Main.Database
             string stm = "UPDATE Factuur SET rekeningnummer='" + factuur.rekeningnummer + "',periode='" + factuur.periode + "',klantid='" +
                 factuur.klantid + "',kosten='" + factuur.kosten + "',status='" + factuur.status + "',meterstand='" + factuur.meterstand + "'";
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
 
         public void editKlacht(Klacht klacht)
@@ -1034,11 +1069,11 @@ namespace CasusBlok2Main.Database
 
             Console.WriteLine(stm);
 
-            conn = new MySqlConnection(cs);
-            conn.Open();
+            cnn = new SqlConnection(cs);
+            cnn.Open();
 
-            MySqlCommand cmd = new MySqlCommand(stm, conn);
-            cmd.ExecuteNonQuery();
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
         }
     }
 }
