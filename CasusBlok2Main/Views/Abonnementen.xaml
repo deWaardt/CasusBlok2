@@ -7,12 +7,14 @@
         mc:Ignorable="d"
         Title="Abonnementen" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Home" Content="Home" HorizontalAlignment="Left" Margin="156,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click"/>
-        <Button x:Name="Home_Copy" Content="Abonnnementen" HorizontalAlignment="Left" Margin="260,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Button x:Name="Home_Copy1" Content="Facturen" HorizontalAlignment="Left" Margin="361,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Button x:Name="Home_Copy2" Content="Settings" HorizontalAlignment="Left" Margin="460,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Button x:Name="Home_Copy3" Content="Account" HorizontalAlignment="Left" Margin="560,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Rectangle HorizontalAlignment="Left" Height="50" Margin="10,22,0,0" Stroke="Black" VerticalAlignment="Top" Width="75" Fill="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
+        <Button x:Name="Home_button" Content="Home" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="75"  RenderTransformOrigin="0.497,0.464"/>
+        <Button x:Name="AbonnementenBtn" Content="Abonnementen" HorizontalAlignment="Left" Margin="194,30,0,0" VerticalAlignment="Top" Width="86" />
+        <Button x:Name="VerhuisBtn" Content="Verhuizing" HorizontalAlignment="Left" Margin="285,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="601,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="AccountBtn" Content="Account" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="FacturenBtn" Content="Facturen" HorizontalAlignment="Left" Margin="365,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="KlachtenVragenBtn" Content="Vragen" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Canvas x:Name="Logo" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="82" Background="#FFA7F110"/>
         <Label Content="Abonnement A" HorizontalAlignment="Left" Margin="156,152,0,0" VerticalAlignment="Top"/>
         <Label Content="Abonnement C" HorizontalAlignment="Left" Margin="545,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="11.751,0.482"/>
         <Label Content="Abonnement B" HorizontalAlignment="Left" Margin="361,152,0,0" VerticalAlignment="Top"/>

@@ -35,5 +35,18 @@ namespace CasusBlok2Main.Views
         {
 
         }
+
+        private void KlachtenVragenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Vragen vraagscherm = new Vragen();
+            vraagscherm.Show();
+            this.Close();
+        }
+        private void Home_button_Click(object sender, RoutedEventArgs e)
+        {
+            Home homescherm = new Home();
+            homescherm.Show();
+            this.Close();
+        }
     }
 }

@@ -30,5 +30,12 @@ namespace CasusBlok2Main.Views
             vraagscherm.Show();
             this.Close();
         }
+
+        private void AbonnementenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Abbonementen abboscherm = new Abbonementen();
+            abboscherm.Show();
+            this.Close();
+        }
     }
 }
