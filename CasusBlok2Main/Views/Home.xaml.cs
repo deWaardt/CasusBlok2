@@ -24,5 +24,11 @@ namespace CasusBlok2Main.Views
             InitializeComponent();
         }
 
+        private void KlachtenVragenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Vragen vraagscherm = new Vragen();
+            vraagscherm.Show();
+            this.Close();
+        }
     }
 }

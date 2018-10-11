@@ -30,6 +30,7 @@ namespace CasusBlok2Main.Views
             pls.Show();
             db = new DbController();
             pls.Close();
+
         }
 
         private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -52,6 +53,8 @@ namespace CasusBlok2Main.Views
                 Mainframe.currentLoggedIn = loginuser;
                 Mainframe.whoLoggedIn();
                 //Open main window
+                Home homescherm = new Home();
+                homescherm.Show();
                 this.Close();
             }
 
