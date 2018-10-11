@@ -24,9 +24,16 @@ namespace CasusBlok2Main.Views
             InitializeComponent();
         }
 
+        //test
+
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
