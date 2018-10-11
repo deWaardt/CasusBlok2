@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -78,13 +78,11 @@
     <Compile Include="Views\Connecting.xaml.cs">
       <DependentUpon>Connecting.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
-=======
+    </Compile>
     <Compile Include="Views\loginIncorrect.xaml.cs">
       <DependentUpon>loginIncorrect.xaml</DependentUpon>
->>>>>>> master
     </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
@@ -110,11 +108,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
     <Page Include="Views\Home.xaml">
-=======
+	<SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\loginIncorrect.xaml">
->>>>>>> master
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

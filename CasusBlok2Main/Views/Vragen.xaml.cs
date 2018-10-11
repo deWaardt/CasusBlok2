@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CasusBlok2Main.Database;
 
 namespace CasusBlok2Main.Views
 {
@@ -69,6 +70,25 @@ namespace CasusBlok2Main.Views
             Dropdownboxcatagorie.Visibility = Visibility.Visible;
             KlachttoelichtingLbl.Visibility = Visibility.Visible;
 
+        }
+
+        private void VerstuurBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Aanvraag aanvraag = new Aanvraag();
+            aanvraag.aanvraagtype = 2;
+            aanvraag.data = VraagTxtbx.Text;
+            DbController db = new DbController();
+            //db.pushAanvraag(aanvraag);
+        }
+
+        private void KlachtVerstuurBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Aanvraag klacht = new Aanvraag();
+            klacht.aanvraagtype = 1;
+            string categorieKlacht = Dropdownboxcatagorie.Text + ", "+ KlachtTxtbx.Text;
+            klacht.data = categorieKlacht;
+            DbController db = new DbController();
+            //db.pushAanvraag(aanvraag);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
