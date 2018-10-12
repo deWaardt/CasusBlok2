@@ -1,12 +1,9 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.MySqlClient;
 using CasusBlok2Main.Main;
-
 using System.Data;
 using System.Data.SqlClient;
 
@@ -25,7 +22,6 @@ namespace CasusBlok2Main.Database
 
         public MsSqlDBController()
         {
-            return;
             bool connection = testConnection();
             if (connection == false) { Console.WriteLine("No connection could be made!"); }
             else { Console.WriteLine("Succesfully connected."); }
@@ -75,7 +71,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 return false;
             }
@@ -112,7 +108,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
 
@@ -161,7 +157,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); }
+            catch (SqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); }
             finally
             {
                 if (msrdr != null) { msrdr.Close(); }
@@ -214,7 +210,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); throw new Exception(); }
+            catch (SqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); throw new Exception(); }
             finally
             {
                 if (msrdr != null) { msrdr.Close(); }
@@ -251,7 +247,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -298,7 +294,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -346,7 +342,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -390,7 +386,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -442,7 +438,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -489,7 +485,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -540,7 +536,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -569,7 +565,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -605,11 +601,11 @@ namespace CasusBlok2Main.Database
                     toReturn.klantid = msrdr.GetInt32(1);
                     toReturn.status = msrdr.GetInt32(2);
                     toReturn.meldingtype = msrdr.GetInt32(3);
-                    toReturn.data = msrdr.GetString(3);
+                    toReturn.data = msrdr.GetString(4);
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -651,7 +647,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -709,7 +705,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -759,7 +755,42 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
+            }
+
+
+            return toReturn;
+        }
+
+        public KlantAbonnement getKlantAbonnementVanKlant(int klantid)
+        {
+            KlantAbonnement toReturn = new KlantAbonnement();
+
+            try
+            {
+                cnn = new SqlConnection(cs);
+                cnn.Open();
+
+                string stm = "SELECT * FROM KlantAbonnement WHERE klantid = " + klantid.ToString(); ;
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
+
+                while (msrdr.Read())
+                {
+                    toReturn.klantid = msrdr.GetInt32(0);
+                    toReturn.abonnementid = msrdr.GetInt32(1);
+                }
+
+            }
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -796,7 +827,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -837,7 +868,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -892,7 +923,7 @@ namespace CasusBlok2Main.Database
                 }
 
             }
-            catch (MySqlException ex)
+            catch (SqlException ex)
             {
                 throw ex;
                 //return null;
@@ -1068,6 +1099,132 @@ namespace CasusBlok2Main.Database
             string stm = "UPDATE Klacht SET klantid='" + klacht.klantid + "',klachttype='" + klacht.klachttype + "',data='" + klacht.data + "' WHERE klachtid='"+klacht.klachtid+"'";
 
             Console.WriteLine(stm);
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void editKlantAbonnement(KlantAbonnement ka)
+        {
+            string stm = "UPDATE KlantAbonnement SET klantid='" + ka.klantid + "',abonnementid='" + ka.abonnementid + "' WHERE klantid='" + ka.klantid + "'";
+
+            Console.WriteLine(stm);
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void editMelding(Melding melding)
+        {
+            string stm = "UPDATE Melding SET klantid='" + melding.klantid + "',status='" + melding.status + "',meldingtype='" +
+                melding.meldingtype + "',data='" + melding.data + "' WHERE meldingnummer = '"+melding.meldingnummer+"'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void editVerbruik(Verbruik verbruik)
+        {
+            string stm = "UPDATE Verbruik SET meterstand='" + verbruik.meterstand + "'WHERE klantid='"+verbruik.klantid+"'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        //=========================================================================================
+
+        public void delKlant(Klant usr)
+        {
+            string stm = "DELETE FROM Klant WHERE klantid ='"+usr.klantid+"'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delAanvraag(Aanvraag av)
+        {
+            string stm = "DELETE FROM Aanvraag WHERE aanvraagnummer ='" + av.aanvraagnummer + "'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delBelmoment(Belmoment bel)
+        {
+            string stm = "DELETE FROM Belmoment WHERE tijdstip ='" + bel.tijdstip + "' AND datum='"+bel.datum+"'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delFactuur(Factuur f)
+        {
+            string stm = "DELETE FROM Factuur WHERE factuurnummer ='" + f.factuurnummer + "'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delKlachtt(Klacht k)
+        {
+            string stm = "DELETE FROM Klacht WHERE klachtid ='" + k.klachtid + "'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delKlantAbonnement(KlantAbonnement ka)
+        {
+            string stm = "DELETE FROM KlantAbonnement WHERE klantid ='" + ka.klantid + "'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delMelding(Melding m)
+        {
+            string stm = "DELETE FROM Melding WHERE meldingnummer ='" + m.meldingnummer + "'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delVerbruik(Verbruik v)
+        {
+            string stm = "DELETE FROM Verbruik WHERE klantid ='" + v.klantid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
