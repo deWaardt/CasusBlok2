@@ -22,6 +22,6 @@
         <Label x:Name="VraagLbl" Content="Uw vraag is :" HorizontalAlignment="Left" Margin="69,217,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <TextBox x:Name="VraagTxtbx" HorizontalAlignment="Left" Height="23" Margin="160,220,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="516" Visibility="Hidden"/>
         <Button x:Name="VerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>
-        <Label x:Name="VerstuurBtn" Content="Label" HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="VerstuurBtn2" Content="Label" HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
