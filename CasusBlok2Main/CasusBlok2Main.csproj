@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -80,28 +80,29 @@
     <Compile Include="Views\Abonnementen.xaml.cs">
       <DependentUpon>Abonnementen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Accountv2.xaml.cs">
+      <DependentUpon>Accountv2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Connecting.xaml.cs">
       <DependentUpon>Connecting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Factuurv2.xaml.cs">
+      <DependentUpon>Factuurv2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
-<<<<<<< HEAD
     </Compile>
     <Compile Include="Views\loginIncorrect.xaml.cs">
       <DependentUpon>loginIncorrect.xaml</DependentUpon>
-=======
->>>>>>> Branch-Pascal
     </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Views\Vragen.xaml.cs">
       <DependentUpon>Vragen.xaml</DependentUpon>
-=======
+    </Compile>
     <Compile Include="Views\WachtwoordChange.xaml.cs">
       <DependentUpon>WachtwoordChange.xaml</DependentUpon>
->>>>>>> Branch-Pascal
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -121,19 +122,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Accountv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Connecting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Factuurv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Home.xaml">
-<<<<<<< HEAD
-	<SubType>Designer</SubType>
+      <SubType>Designer</SubType>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\loginIncorrect.xaml">
-=======
->>>>>>> Branch-Pascal
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,28 +147,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
-=======
     <Page Include="Views\WachtwoordChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Factuur.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
->>>>>>> Branch-Pascal
     <Page Include="Views\Vragen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-<<<<<<< HEAD
-=======
-    <Page Include="Views\Account.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
->>>>>>> Branch-Pascal
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\Mainframe.cs" />

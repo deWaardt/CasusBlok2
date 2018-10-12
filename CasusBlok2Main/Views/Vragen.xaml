@@ -34,5 +34,7 @@
         <Label x:Name="KlachttoelichtingLbl" Content="Toelichting van uw klacht: " HorizontalAlignment="Left" Margin="69,243,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,0.344" Visibility="Hidden"/>
         <TextBox x:Name="KlachtTxtbx" HorizontalAlignment="Left" Height="85" Margin="223,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="483" Visibility="Hidden"/>
         <Button x:Name="KlachtVerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="223,344,0,0" VerticalAlignment="Top" Width="87" Visibility="Hidden" Click="KlachtVerstuurBtn_Click"/>
+        <!--<Button x:Name="VerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>-->
+        <!--<Label x:Name="VerstuurBtn2" Content="Label" HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top"/>-->
     </Grid>
 </Window>
