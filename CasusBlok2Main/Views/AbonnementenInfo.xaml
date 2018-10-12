@@ -8,11 +8,11 @@
         Title="AbonnementenInfo" Height="450" Width="800">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="257" Margin="25,123,0,0" VerticalAlignment="Top" Width="695"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="610,141,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Huidige abonnement" HorizontalAlignment="Left" Margin="545,141,0,0" VerticalAlignment="Top" Width="129"/>
         <Button x:Name="Verlengen" Content="Verlengen" HorizontalAlignment="Left" Margin="600,189,0,0" VerticalAlignment="Top" Width="74"/>
         <Button x:Name="Wijzigen" Content="Wijzigen" HorizontalAlignment="Left" Margin="600,232,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="Beëindigen" Content="Beëindigen" HorizontalAlignment="Left" Margin="601,276,0,0" VerticalAlignment="Top" Width="74"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top" Height="205" Width="460"/>
+        <Label Content="Abonnement informatie" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top" Height="205" Width="460"/>
 
     </Grid>
 </Window>
