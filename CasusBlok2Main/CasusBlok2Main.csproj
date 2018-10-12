@@ -85,15 +85,23 @@
     </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+<<<<<<< HEAD
     </Compile>
     <Compile Include="Views\loginIncorrect.xaml.cs">
       <DependentUpon>loginIncorrect.xaml</DependentUpon>
+=======
+>>>>>>> Branch-Pascal
     </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Views\Vragen.xaml.cs">
       <DependentUpon>Vragen.xaml</DependentUpon>
+=======
+    <Compile Include="Views\WachtwoordChange.xaml.cs">
+      <DependentUpon>WachtwoordChange.xaml</DependentUpon>
+>>>>>>> Branch-Pascal
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -118,11 +126,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Home.xaml">
+<<<<<<< HEAD
 	<SubType>Designer</SubType>
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\loginIncorrect.xaml">
+=======
+>>>>>>> Branch-Pascal
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,10 +141,28 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
+=======
+    <Page Include="Views\WachtwoordChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Factuur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+>>>>>>> Branch-Pascal
     <Page Include="Views\Vragen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
+=======
+    <Page Include="Views\Account.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+>>>>>>> Branch-Pascal
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\Mainframe.cs" />
