@@ -93,6 +93,21 @@
     <Compile Include="Views\Vragen.xaml.cs">
       <DependentUpon>Vragen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\FAQ.xaml.cs">
+      <DependentUpon>FAQ.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Verhuizing.xaml.cs">
+      <DependentUpon>Verhuizing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Klachten.xaml.cs">
+      <DependentUpon>Klachten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Playarea.xaml.cs">
+      <DependentUpon>Playarea.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Klachtbevestiging.xaml.cs">
+      <DependentUpon>Klachtbevestiging.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,6 +143,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Vragen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FAQ.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Verhuizing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Klachten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Playarea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Klachtbevestiging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
