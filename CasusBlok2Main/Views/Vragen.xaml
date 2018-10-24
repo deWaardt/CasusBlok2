@@ -9,20 +9,20 @@
         Title="Vragen" Height="450" Width="800">
     <Grid>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="312" Margin="26,83,0,0" Stroke="Black" VerticalAlignment="Top" Width="730"/>
-        <Button x:Name="Home_button" Content="Home" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="75"  RenderTransformOrigin="0.497,0.464"/>
-        <Button x:Name="AbonnementenBtn" Content="Abonnementen" HorizontalAlignment="Left" Margin="194,30,0,0" VerticalAlignment="Top" Width="86" />
-        <Button x:Name="VerhuisBtn" Content="Verhuizing" HorizontalAlignment="Left" Margin="285,30,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="601,30,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="AccountBtn" Content="Account" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="FacturenBtn" Content="Facturen" HorizontalAlignment="Left" Margin="365,30,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="KlachtenVragenBtn" Content="Vragen" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="Home_button" Content="Home" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="75"  RenderTransformOrigin="0.497,0.464" Click="HomeBtn_Click"/>
+        <Button x:Name="AbonnementenBtn" Content="Abonnementen" HorizontalAlignment="Left" Margin="194,30,0,0" VerticalAlignment="Top" Width="86" Click="AbonnementenBtn_Click"/>
+        <Button x:Name="VerhuisBtn" Content="Verhuizing" HorizontalAlignment="Left" Margin="285,30,0,0" VerticalAlignment="Top" Width="75" Click="VerhuisBtn_Click"/>
+        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="601,30,0,0" VerticalAlignment="Top" Width="75" Click="SettingsBtn_Click"/>
+        <Button x:Name="AccountBtn" Content="Account" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Width="75" Click="AccountBtn_Click"/>
+        <Button x:Name="FacturenBtn" Content="Facturen" HorizontalAlignment="Left" Margin="365,30,0,0" VerticalAlignment="Top" Width="75" Click="FacturenBtn_Click"/>
+        <Button x:Name="KlachtenVragenBtn" Content="Vragen" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Width="75" Click="KlachtenVragenBtn_Click"/>
         <Canvas x:Name="Logo" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="82" Background="#FFA7F110"/>
         <Button x:Name="VraagstelBtn" Content="Vraag stellen" HorizontalAlignment="Left" Margin="69,111,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.247,-0.135" Click="VraagstelBtn_Click"/>
         <Button x:Name="FAQBtn" Content="FAQ" HorizontalAlignment="Left" Margin="194,111,0,0" VerticalAlignment="Top" Width="75" Click="FAQBtn_Click"/>
         <Label x:Name="ToelichtingLbl" Content="Wat is uw vraag? Kijk eerst eventjes in de FAQ, misschien is uw vraag hier al beantwoord! &#xD;&#xA; Wanneer deze nog niet beantwoordt is binnen de FAQ vul deze hier onder in en klik op versturen. " HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.43,-0.055" Width="532" Height="60" Visibility="Hidden"/>
         <Label x:Name="VraagLbl" Content="Uw vraag is :" HorizontalAlignment="Left" Margin="69,217,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
         <TextBox x:Name="VraagTxtbx" HorizontalAlignment="Left" Height="23" Margin="160,220,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="516" Visibility="Hidden"/>
-        <Button x:Name="VerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>
+        <Button x:Name="VerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="VerstuurBtn_Click"/>
         <Label x:Name="FAQLbl" Content="FAQ: &#xD;&#xA;Wat kan ik doen als mijn stroom is uitgevallen? &#xD;&#xA; Controlleer eerst op onze website of er een storing was in uw omgeving. &#xD;&#xA; Verder kunt u uw meterkast checken en kijken of de stop is doorgeslagen. &#xD;&#xA;&#xD;&#xA;Hoe wordt ik klant? &#xD;&#xA; Aanmelden voor energie kan eenvoudig via onze website.&#xD;&#xA; In een paar stappen geeft u uw gegevens door en kiest u het gewenste product." HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top" Visibility="Visible"/>
         <Button x:Name="KlachtBtn" Content="Klacht indienen" HorizontalAlignment="Left" Margin="645,359,0,0" VerticalAlignment="Top" Width="92" Click="KlachtBtn_Click"/>
         <Label x:Name= "KlachtLbl" Content="Wanneer u een klacht wilt indienen kunt u aangeven onder welke catagorie uw klacht valt en wat u klacht is." HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
@@ -33,6 +33,8 @@
         </ComboBox>
         <Label x:Name="KlachttoelichtingLbl" Content="Toelichting van uw klacht: " HorizontalAlignment="Left" Margin="69,243,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,0.344" Visibility="Hidden"/>
         <TextBox x:Name="KlachtTxtbx" HorizontalAlignment="Left" Height="85" Margin="223,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="483" Visibility="Hidden"/>
-        <Button x:Name="KlachtVerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="223,344,0,0" VerticalAlignment="Top" Width="87" Visibility="Hidden"/>
+        <Button x:Name="KlachtVerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="223,344,0,0" VerticalAlignment="Top" Width="87" Visibility="Hidden" Click="KlachtVerstuurBtn_Click"/>
+        <!--<Button x:Name="VerstuurBtn" Content="Verstuur" HorizontalAlignment="Left" Margin="160,260,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>-->
+        <!--<Label x:Name="VerstuurBtn2" Content="Label" HorizontalAlignment="Left" Margin="69,152,0,0" VerticalAlignment="Top"/>-->
     </Grid>
 </Window>

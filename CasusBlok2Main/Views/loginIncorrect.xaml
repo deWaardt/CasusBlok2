@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CasusBlok2Main.Views"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="loginIncorrect" Height="219.327" Width="443.697">
     <Grid>

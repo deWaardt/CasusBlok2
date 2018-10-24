@@ -15,16 +15,14 @@ using System.Windows.Shapes;
 namespace CasusBlok2Main.Views
 {
     /// <summary>
-    /// Interaction logic for Abbonementen.xaml
+    /// Interaction logic for Factuurv2.xaml
     /// </summary>
-    public partial class Abbonementen : Window
+    public partial class Factuurv2 : Window
     {
-        public Abbonementen()
+        public Factuurv2()
         {
             InitializeComponent();
         }
-
-        //test
 
         private void KlachtenVragenBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -74,7 +72,5 @@ namespace CasusBlok2Main.Views
             //   verhscherm.Show();
             //   this.Close();
         }
-
-
     }
 }
