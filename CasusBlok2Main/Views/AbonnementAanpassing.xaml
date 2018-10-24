@@ -8,11 +8,11 @@
         Title="AbonnementAanpassing" Height="450" Width="800">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="257" Margin="25,123,0,0" VerticalAlignment="Top" Width="695"/>
-        <Label Content="Huidige abonnement" HorizontalAlignment="Left" Margin="552,141,0,0" VerticalAlignment="Top" Width="122"/>
-        <Label Content="Reden voor abonnement te veranderen&#xD;&#xA;###&#xD;&#xA;###&#xD;&#xA;###&#xD;&#xA;###&#xD;&#xA;###" HorizontalAlignment="Left" Margin="62,189,0,0" VerticalAlignment="Top" Height="107" Width="460"/>
+        <Label x:Name="LabelHuidigeAbonnement" Content="Huidige abonnement" HorizontalAlignment="Left" Margin="552,141,0,0" VerticalAlignment="Top" Width="122"/>
         <Button x:Name="AbonnementAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="82,341,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button x:Name="AbonnementBevestigen" Content="Bevestigen" HorizontalAlignment="Left" Margin="361,341,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Abonnement wijzigen" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="AbonnementBevestigen" Content="Bevestigen" HorizontalAlignment="Left" Margin="361,341,0,0" VerticalAlignment="Top" Width="75" Click="AbonnementBevestigen_Click"/>
+        <Label x:Name="LabelAanpassingKeuze" Content="Abonnement wijzigen" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextboxAbonnement" HorizontalAlignment="Left" Height="123" Margin="62,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="374" TextChanged="TextBox_TextChanged"/>
 
     </Grid>
 </Window>
