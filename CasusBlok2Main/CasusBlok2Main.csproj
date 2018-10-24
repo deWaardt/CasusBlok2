@@ -71,21 +71,40 @@
     <Compile Include="Database\Aanvraag.cs" />
     <Compile Include="Database\Abonnement.cs" />
     <Compile Include="Database\Belmoment.cs" />
+    <Compile Include="Database\MsSqlDBController.cs" />
     <Compile Include="Database\Factuur.cs" />
+    <Compile Include="Database\Klacht.cs" />
     <Compile Include="Database\KlantAbonnement.cs" />
     <Compile Include="Database\Melding.cs" />
     <Compile Include="Database\Verbruik.cs" />
+<<<<<<< HEAD
     <Compile Include="Views\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
+=======
+    <Compile Include="Views\Abonnementen.xaml.cs">
+      <DependentUpon>Abonnementen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Accountv2.xaml.cs">
+      <DependentUpon>Accountv2.xaml</DependentUpon>
+>>>>>>> 56091a3750c8ff688e8864330ee9151d6eb703b3
     </Compile>
     <Compile Include="Views\Connecting.xaml.cs">
       <DependentUpon>Connecting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Factuurv2.xaml.cs">
+      <DependentUpon>Factuurv2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\loginIncorrect.xaml.cs">
+      <DependentUpon>loginIncorrect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Vragen.xaml.cs">
+      <DependentUpon>Vragen.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WachtwoordChange.xaml.cs">
       <DependentUpon>WachtwoordChange.xaml</DependentUpon>
@@ -104,15 +123,34 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+<<<<<<< HEAD
     <Page Include="Views\Account.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+=======
+    <Page Include="Views\Abonnementen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Accountv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+>>>>>>> 56091a3750c8ff688e8864330ee9151d6eb703b3
     </Page>
     <Page Include="Views\Connecting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Factuurv2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Home.xaml">
+      <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\loginIncorrect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,14 +158,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+<<<<<<< HEAD
+=======
     <Page Include="Views\WachtwoordChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Factuur.xaml">
+    <Page Include="Views\Vragen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+>>>>>>> 56091a3750c8ff688e8864330ee9151d6eb703b3
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\Mainframe.cs" />

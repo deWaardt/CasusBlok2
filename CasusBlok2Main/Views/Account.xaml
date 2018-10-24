@@ -11,7 +11,7 @@
         <Button x:Name="Home_button" Content="Home" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="75"  RenderTransformOrigin="0.497,0.464"/>
         <Button x:Name="AbonnementenBtn" Content="Abonnementen" HorizontalAlignment="Left" Margin="194,30,0,0" VerticalAlignment="Top" Width="86"/>
         <Button x:Name="VerhuisBtn" Content="Verhuizing" HorizontalAlignment="Left" Margin="285,30,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="601,30,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="SettingsBtnAcc" Content="Settings" HorizontalAlignment="Left" Margin="601,30,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="AccountBtn" Content="Account" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="FacturenBtn" Content="Facturen" HorizontalAlignment="Left" Margin="365,30,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="KlachtenVragenBtn" Content="Vragen" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Width="75"/>

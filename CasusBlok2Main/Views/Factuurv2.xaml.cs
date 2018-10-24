@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace CasusBlok2Main.Views
 {
     /// <summary>
-    /// Interaction logic for Meldingen.xaml
+    /// Interaction logic for Factuurv2.xaml
     /// </summary>
-    public partial class WachtwoordChange : Window
+    public partial class Factuurv2 : Window
     {
-        public WachtwoordChange()
+        public Factuurv2()
         {
             InitializeComponent();
         }
