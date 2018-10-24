@@ -7,18 +7,12 @@
         mc:Ignorable="d"
         Title="Abonnementen" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Home" Content="Home" HorizontalAlignment="Left" Margin="156,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click"/>
-        <Button x:Name="Home_Copy" Content="Abonnnementen" HorizontalAlignment="Left" Margin="260,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Button x:Name="Home_Copy1" Content="Facturen" HorizontalAlignment="Left" Margin="361,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Button x:Name="Home_Copy2" Content="Settings" HorizontalAlignment="Left" Margin="460,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Button x:Name="Home_Copy3" Content="Account" HorizontalAlignment="Left" Margin="560,41,0,0" VerticalAlignment="Top" Width="75" Height="31" AutomationProperties.Name="Home" Click="Home_Click" RenderTransformOrigin="0.487,0.519"/>
-        <Rectangle HorizontalAlignment="Left" Height="50" Margin="10,22,0,0" Stroke="Black" VerticalAlignment="Top" Width="75" Fill="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="156,310,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="361,310,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="564,310,0,0" VerticalAlignment="Top"/>
         <Label Content="Abonnement A" HorizontalAlignment="Left" Margin="156,152,0,0" VerticalAlignment="Top"/>
         <Label Content="Abonnement C" HorizontalAlignment="Left" Margin="545,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="11.751,0.482"/>
         <Label Content="Abonnement B" HorizontalAlignment="Left" Margin="361,152,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="OptieA" Content="Abonnement A" HorizontalAlignment="Left" Margin="156,327,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click" Height="28"/>
+        <Button x:Name="OptieB" Content="Abonnement B" HorizontalAlignment="Left" Margin="360,327,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click" Height="28"/>
+        <Button x:Name="OptieC" Content="Abonnement C" HorizontalAlignment="Left" Margin="545,327,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click" Height="28"/>
 
     </Grid>
 </Window>

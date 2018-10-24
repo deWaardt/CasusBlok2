@@ -15,25 +15,13 @@ using System.Windows.Shapes;
 namespace CasusBlok2Main.Views
 {
     /// <summary>
-    /// Interaction logic for Abbonementen.xaml
+    /// Interaction logic for AdresWijzigen.xaml
     /// </summary>
-    public partial class Abbonementen : Window
+    public partial class AdresWijzigen : Window
     {
-        public Abbonementen()
+        public AdresWijzigen()
         {
             InitializeComponent();
-        }
-
-        //test
-
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

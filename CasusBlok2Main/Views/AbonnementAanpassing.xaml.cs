@@ -15,25 +15,18 @@ using System.Windows.Shapes;
 namespace CasusBlok2Main.Views
 {
     /// <summary>
-    /// Interaction logic for Abbonementen.xaml
+    /// Interaction logic for AbonnementAanpassing.xaml
     /// </summary>
-    public partial class Abbonementen : Window
+    public partial class AbonnementAanpassing : Window
     {
-        public Abbonementen()
+        public AbonnementAanpassing()
         {
             InitializeComponent();
         }
 
-        //test
+        
 
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
+        
     }
 }
