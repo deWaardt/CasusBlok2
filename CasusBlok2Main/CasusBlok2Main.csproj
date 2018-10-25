@@ -111,9 +111,6 @@
     <Compile Include="Views\Klachten.xaml.cs">
       <DependentUpon>Klachten.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Playarea.xaml.cs">
-      <DependentUpon>Playarea.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Klachtbevestiging.xaml.cs">
       <DependentUpon>Klachtbevestiging.xaml</DependentUpon>
     </Compile>
@@ -176,10 +173,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Klachten.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Playarea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
