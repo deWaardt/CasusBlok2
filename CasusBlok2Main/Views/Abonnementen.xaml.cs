@@ -75,6 +75,12 @@ namespace CasusBlok2Main.Views
             //   this.Close();
         }
 
+        private void KlachtenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Klachten klacht = new Klachten();
+            klacht.Show();
+            this.Close();
+        }
 
     }
 }

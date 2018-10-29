@@ -92,11 +92,17 @@
     <Compile Include="Views\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Klachten.xaml.cs">
+      <DependentUpon>Klachten.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\loginIncorrect.xaml.cs">
       <DependentUpon>loginIncorrect.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Testpage.xaml.cs">
+      <DependentUpon>Testpage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Vragen.xaml.cs">
       <DependentUpon>Vragen.xaml</DependentUpon>
@@ -139,11 +145,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Klachten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\loginIncorrect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\loginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Testpage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

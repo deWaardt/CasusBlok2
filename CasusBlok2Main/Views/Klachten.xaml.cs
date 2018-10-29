@@ -11,17 +11,33 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CasusBlok2Main.Database;
+using CasusBlok2Main.Main;
 
 namespace CasusBlok2Main.Views
 {
     /// <summary>
-    /// Interaction logic for Factuurv2.xaml
+    /// Interaction logic for Klachten.xaml
     /// </summary>
-    public partial class Factuurv2 : Window
+    public partial class Klachten : Window
     {
-        public Factuurv2()
+        MsSqlDBController msdb;
+        public Klachten()
         {
+            msdb = new MsSqlDBController();
             InitializeComponent();
+        }
+        private void KlachtVerstuurBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Klacht klacht = new Klacht();
+            //klacht.klachttype = 1;
+            if (Dropdownboxcatagorie.Text == "Stroomuitval") { klacht.klachttype = 1; }
+            else if (Dropdownboxcatagorie.Text == "Incorrecte factuur") { klacht.klachttype = 2; }
+            else if (Dropdownboxcatagorie.Text == "Lange wachttijd") { klacht.klachttype = 3; }
+            else if (Dropdownboxcatagorie.Text == "Anders") { klacht.klachttype = 4; }
+            klacht.klantid = Mainframe.currentLoggedIn.klantid;
+            klacht.data = KlachtTxtbx.Text;
+            msdb.pushKlacht(klacht);
         }
 
         private void KlachtenVragenBtn_Click(object sender, RoutedEventArgs e)
