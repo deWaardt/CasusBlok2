@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,7 @@ namespace CasusBlok2Main.Database
         {
             try
             {
-                
+
                 cnn = new SqlConnection(cs);
                 cnn.Open();
 
@@ -192,6 +192,53 @@ namespace CasusBlok2Main.Database
                 cnn.Open();
 
                 string stm = "SELECT * FROM Klant WHERE email = '" + usrname + "'";
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
+
+                while (msrdr.Read())
+                {
+                    //console.writeline(msrdr.getstring(1));
+                    toReturn.klantid = (msrdr.GetInt32(0));
+                    toReturn.email = (msrdr.GetString(1));
+                    toReturn.wachtwoord = (msrdr.GetString(2));
+                    toReturn.voornaam = (msrdr.GetString(3));
+                    toReturn.tussenvoegsel = (msrdr.GetString(4));
+                    toReturn.achternaam = (msrdr.GetString(5));
+                    toReturn.geboortedatum = (msrdr.GetString(6));
+                    toReturn.telefoonnummer = (msrdr.GetString(7));
+
+                }
+
+            }
+            catch (SqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); throw new Exception(); }
+            finally
+            {
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
+            }
+
+
+            return toReturn;
+        }
+
+        public Klant getUserByID(int usr)
+        {
+            //List<int> klantid = new List<int>();
+            //List<string> email = new List<string>();
+            //List<string> wachtwoord = new List<string>();
+            //List<string> voornaam = new List<string>();
+            //List<string> tussenvoegsel = new List<string>();
+            //List<string> achternaam = new List<string>();
+            //List<string> geboortedatum = new List<string>();
+            //List<string> telefoonnummer = new List<string>();
+            Klant toReturn = new Klant();
+
+            try
+            {
+                cnn = new SqlConnection(cs);
+                cnn.Open();
+
+                string stm = "SELECT * FROM Klant WHERE klantid = '" + usr.ToString() + "'";
                 SqlCommand mscmd = new SqlCommand(stm, cnn);
                 msrdr = mscmd.ExecuteReader();
 
@@ -911,7 +958,7 @@ namespace CasusBlok2Main.Database
                     klachtids.Add(msrdr.GetInt32(0));
                     klantids.Add(msrdr.GetInt32(1));
                     klachttypes.Add(msrdr.GetInt32(2));
-                    datas.Add(msrdr.GetString(4));
+                    datas.Add(msrdr.GetString(3));
                 }
 
             }
@@ -1001,8 +1048,8 @@ namespace CasusBlok2Main.Database
 
         public void pushKlant(Klant usr)
         {
-            string stm = "INSERT INTO Klant (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('"+usr.email + "','" + usr.wachtwoord+"','"+usr.voornaam + "','" +usr.tussenvoegsel
-                + "','" +usr.achternaam + "','" +usr.geboortedatum + "','" +usr.telefoonnummer+"')";
+            string stm = "INSERT INTO Klant (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('" + usr.email + "','" + usr.wachtwoord + "','" + usr.voornaam + "','" + usr.tussenvoegsel
+                + "','" + usr.achternaam + "','" + usr.geboortedatum + "','" + usr.telefoonnummer + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1130,8 +1177,8 @@ namespace CasusBlok2Main.Database
 
         public void editAanvraag(Aanvraag aanvraag)
         {
-            string stm = "UPDATE Aanvraag SET aanvraagtype='" + aanvraag.aanvraagtype + "',klantid='" + aanvraag.klantid + "',data='" + aanvraag.data + 
-                "' WHERE aanvraagnummer = '"+aanvraag.aanvraagnummer+"'";
+            string stm = "UPDATE Aanvraag SET aanvraagtype='" + aanvraag.aanvraagtype + "',klantid='" + aanvraag.klantid + "',data='" + aanvraag.data +
+                "' WHERE aanvraagnummer = '" + aanvraag.aanvraagnummer + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1143,7 +1190,7 @@ namespace CasusBlok2Main.Database
         public void editBelmoment(Belmoment belmoment)
         {
             string stm = "UPDATE Belmoment SET klantid='" + belmoment.klantid + "',tijdstip='" + belmoment.tijdstip + "',datum='" + belmoment.datum + "',status='" +
-                belmoment.status + "',notitie='" + belmoment.notitie +"' WHERE (tijdstip = '"+belmoment.tijdstip+"' AND datum = '"+belmoment.datum+"' AND klantid = '"+belmoment.klantid+ "')";
+                belmoment.status + "',notitie='" + belmoment.notitie + "' WHERE (tijdstip = '" + belmoment.tijdstip + "' AND datum = '" + belmoment.datum + "' AND klantid = '" + belmoment.klantid + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1166,7 +1213,7 @@ namespace CasusBlok2Main.Database
 
         public void editKlacht(Klacht klacht)
         {
-            string stm = "UPDATE Klacht SET klantid='" + klacht.klantid + "',klachttype='" + klacht.klachttype + "',data='" + klacht.data + "' WHERE klachtid='"+klacht.klachtid+"'";
+            string stm = "UPDATE Klacht SET klantid='" + klacht.klantid + "',klachttype='" + klacht.klachttype + "',data='" + klacht.data + "' WHERE klachtid='" + klacht.klachtid + "'";
 
             Console.WriteLine(stm);
 
@@ -1193,7 +1240,7 @@ namespace CasusBlok2Main.Database
         public void editMelding(Melding melding)
         {
             string stm = "UPDATE Melding SET klantid='" + melding.klantid + "',status='" + melding.status + "',meldingtype='" +
-                melding.meldingtype + "',data='" + melding.data + "' WHERE meldingnummer = '"+melding.meldingnummer+"'";
+                melding.meldingtype + "',data='" + melding.data + "' WHERE meldingnummer = '" + melding.meldingnummer + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1204,7 +1251,7 @@ namespace CasusBlok2Main.Database
 
         public void editVerbruik(Verbruik verbruik)
         {
-            string stm = "UPDATE Verbruik SET meterstand='" + verbruik.meterstand + "'WHERE klantid='"+verbruik.klantid+"'";
+            string stm = "UPDATE Verbruik SET meterstand='" + verbruik.meterstand + "'WHERE klantid='" + verbruik.klantid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1217,7 +1264,7 @@ namespace CasusBlok2Main.Database
 
         public void delKlant(Klant usr)
         {
-            string stm = "DELETE FROM Klant WHERE klantid ='"+usr.klantid+"'";
+            string stm = "DELETE FROM Klant WHERE klantid ='" + usr.klantid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1250,7 +1297,7 @@ namespace CasusBlok2Main.Database
 
         public void delBelmoment(Belmoment bel)
         {
-            string stm = "DELETE FROM Belmoment WHERE tijdstip ='" + bel.tijdstip + "' AND datum='"+bel.datum+"'";
+            string stm = "DELETE FROM Belmoment WHERE tijdstip ='" + bel.tijdstip + "' AND datum='" + bel.datum + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
