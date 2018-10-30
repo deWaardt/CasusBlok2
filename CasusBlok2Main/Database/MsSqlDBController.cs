@@ -221,6 +221,53 @@ namespace CasusBlok2Main.Database
             return toReturn;
         }
 
+        public Medewerker getMedewerker(string usrname)
+        {
+            //List<int> klantid = new List<int>();
+            //List<string> email = new List<string>();
+            //List<string> wachtwoord = new List<string>();
+            //List<string> voornaam = new List<string>();
+            //List<string> tussenvoegsel = new List<string>();
+            //List<string> achternaam = new List<string>();
+            //List<string> geboortedatum = new List<string>();
+            //List<string> telefoonnummer = new List<string>();
+            Medewerker toReturn = new Medewerker();
+
+            try
+            {
+                cnn = new SqlConnection(cs);
+                cnn.Open();
+
+                string stm = "SELECT * FROM Medewerker WHERE email = '" + usrname + "'";
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
+
+                while (msrdr.Read())
+                {
+                    //console.writeline(msrdr.getstring(1));
+                    toReturn.medewerkerid = (msrdr.GetInt32(0));
+                    toReturn.email = (msrdr.GetString(1));
+                    toReturn.wachtwoord = (msrdr.GetString(2));
+                    toReturn.voornaam = (msrdr.GetString(3));
+                    toReturn.tussenvoegsel = (msrdr.GetString(4));
+                    toReturn.achternaam = (msrdr.GetString(5));
+                    toReturn.geboortedatum = (msrdr.GetString(6));
+                    toReturn.telefoonnummer = (msrdr.GetString(7));
+
+                }
+
+            }
+            catch (SqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); throw new Exception(); }
+            finally
+            {
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
+            }
+
+
+            return toReturn;
+        }
+
         /// <summary>
         /// Vraag een specifieke aanvraag op.
         /// </summary>
@@ -964,6 +1011,18 @@ namespace CasusBlok2Main.Database
             mscmd.ExecuteNonQuery();
         }
 
+        public void pushMedewerker(Medewerker usr)
+        {
+            string stm = "INSERT INTO Medewerker (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('" + usr.email + "','" + usr.wachtwoord + "','" + usr.voornaam + "','" + usr.tussenvoegsel
+                + "','" + usr.achternaam + "','" + usr.geboortedatum + "','" + usr.telefoonnummer + "')";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
         public void pushAanvraag(Aanvraag aanvraag)
         {
             string stm = "INSERT INTO Aanvraag (aanvraagtype, klantid, data) VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "')";
@@ -1050,6 +1109,17 @@ namespace CasusBlok2Main.Database
         {
             string stm = "UPDATE Klant SET email='" + usr.email + "',wachtwoord='" + usr.wachtwoord + "',voornaam='" + usr.voornaam + "',tussenvoegsel='" + usr.tussenvoegsel
                 + "',achternaam='" + usr.achternaam + "',geboortedatum='" + usr.geboortedatum + "',telefoonnummer='" + usr.telefoonnummer + "' WHERE klantid = '" + usr.klantid + "'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+        public void editMedewerker(Medewerker usr)
+        {
+            string stm = "UPDATE Medewerker SET email='" + usr.email + "',wachtwoord='" + usr.wachtwoord + "',voornaam='" + usr.voornaam + "',tussenvoegsel='" + usr.tussenvoegsel
+                + "',achternaam='" + usr.achternaam + "',geboortedatum='" + usr.geboortedatum + "',telefoonnummer='" + usr.telefoonnummer + "' WHERE medewerkerid = '" + usr.medewerkerid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1148,6 +1218,17 @@ namespace CasusBlok2Main.Database
         public void delKlant(Klant usr)
         {
             string stm = "DELETE FROM Klant WHERE klantid ='"+usr.klantid+"'";
+
+            cnn = new SqlConnection(cs);
+            cnn.Open();
+
+            SqlCommand mscmd = new SqlCommand(stm, cnn);
+            mscmd.ExecuteNonQuery();
+        }
+
+        public void delMedewerker(Medewerker usr)
+        {
+            string stm = "DELETE FROM Medewerker WHERE medewerkerid ='" + usr.medewerkerid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();

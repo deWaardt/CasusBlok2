@@ -9,7 +9,7 @@
         Title="loginWindow" Height="394.958" Width="623.529">
     <Grid>
         <TextBox HorizontalAlignment="Left" x:Name="usrname" Height="23" Margin="400,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
-        <Button Content="Inloggen" HorizontalAlignment="Left" Margin="400,88,0,0" VerticalAlignment="Top" Width="195" Height="30" Click="Button_Click" RenderTransformOrigin="0.893,0.55"/>
+        <Button Content="Inloggen" x:Name="InlogKnop" HorizontalAlignment="Left" Margin="400,88,0,0" VerticalAlignment="Top" Width="195" Height="30" Click="LoginKlant" RenderTransformOrigin="0.893,0.55"/>
         <Label Content="E-Mail" HorizontalAlignment="Left" Margin="317,23,0,0" VerticalAlignment="Top"/>
         <Label Content="Wachtwoord" HorizontalAlignment="Left" Margin="317,51,0,0" VerticalAlignment="Top"/>
         <RichTextBox HorizontalAlignment="Left" Height="99" Margin="27,23,0,0" VerticalAlignment="Top" Width="263">
@@ -32,9 +32,10 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Content="Inloggen als medewerker" HorizontalAlignment="Left" Margin="448,330,0,0" VerticalAlignment="Top" Width="147" Visibility="Hidden"/>
+        <Button x:Name="MedewerkerKnop" Click="SwitchtoMederwerker" Content="Inloggen als medewerker" HorizontalAlignment="Left" Margin="448,330,0,0" VerticalAlignment="Top" Width="147" Visibility="Visible"/>
         <PasswordBox x:Name="passwordb" HorizontalAlignment="Left" Height="23" Margin="400,54,0,0" VerticalAlignment="Top" Width="195" Visibility="Hidden"/>
         <TextBox HorizontalAlignment="Left" x:Name="password" Height="23" Margin="400,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195"/>
+        <Button Content="Terug" x:Name="TerugKnop" Click="TerugNaarKlant" HorizontalAlignment="Left" Margin="27,330,0,0" VerticalAlignment="Top" Visibility="Hidden" Width="75"/>
 
     </Grid>
 </Window>

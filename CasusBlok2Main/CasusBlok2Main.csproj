@@ -71,6 +71,7 @@
     <Compile Include="Database\Aanvraag.cs" />
     <Compile Include="Database\Abonnement.cs" />
     <Compile Include="Database\Belmoment.cs" />
+    <Compile Include="Database\Medewerker.cs" />
     <Compile Include="Database\MsSqlDBController.cs" />
     <Compile Include="Database\Factuur.cs" />
     <Compile Include="Database\Klacht.cs" />
