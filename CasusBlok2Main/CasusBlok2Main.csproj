@@ -87,12 +87,6 @@
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MedewerkerActies\ZieKlachten.xaml.cs">
-      <DependentUpon>ZieKlachten.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MedewerkerPanel.xaml.cs">
-      <DependentUpon>MedewerkerPanel.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,14 +110,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\loginWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MedewerkerActies\ZieKlachten.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\MedewerkerPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

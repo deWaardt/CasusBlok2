@@ -221,53 +221,6 @@ namespace CasusBlok2Main.Database
             return toReturn;
         }
 
-        public Klant getUserByID(int usr)
-        {
-            //List<int> klantid = new List<int>();
-            //List<string> email = new List<string>();
-            //List<string> wachtwoord = new List<string>();
-            //List<string> voornaam = new List<string>();
-            //List<string> tussenvoegsel = new List<string>();
-            //List<string> achternaam = new List<string>();
-            //List<string> geboortedatum = new List<string>();
-            //List<string> telefoonnummer = new List<string>();
-            Klant toReturn = new Klant();
-
-            try
-            {
-                cnn = new SqlConnection(cs);
-                cnn.Open();
-
-                string stm = "SELECT * FROM Klant WHERE klantid = '" + usr.ToString() + "'";
-                SqlCommand mscmd = new SqlCommand(stm, cnn);
-                msrdr = mscmd.ExecuteReader();
-
-                while (msrdr.Read())
-                {
-                    //console.writeline(msrdr.getstring(1));
-                    toReturn.klantid = (msrdr.GetInt32(0));
-                    toReturn.email = (msrdr.GetString(1));
-                    toReturn.wachtwoord = (msrdr.GetString(2));
-                    toReturn.voornaam = (msrdr.GetString(3));
-                    toReturn.tussenvoegsel = (msrdr.GetString(4));
-                    toReturn.achternaam = (msrdr.GetString(5));
-                    toReturn.geboortedatum = (msrdr.GetString(6));
-                    toReturn.telefoonnummer = (msrdr.GetString(7));
-
-                }
-
-            }
-            catch (SqlException ex) { Console.WriteLine("Error: {0}", ex.ToString()); throw new Exception(); }
-            finally
-            {
-                if (msrdr != null) { msrdr.Close(); }
-                if (cnn != null) { cnn.Close(); }
-            }
-
-
-            return toReturn;
-        }
-
         public Medewerker getMedewerker(string usrname)
         {
             //List<int> klantid = new List<int>();
@@ -958,7 +911,7 @@ namespace CasusBlok2Main.Database
                     klachtids.Add(msrdr.GetInt32(0));
                     klantids.Add(msrdr.GetInt32(1));
                     klachttypes.Add(msrdr.GetInt32(2));
-                    datas.Add(msrdr.GetString(3));
+                    datas.Add(msrdr.GetString(4));
                 }
 
             }

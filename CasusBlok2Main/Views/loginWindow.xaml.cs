@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CasusBlok2Main.Database;
 using CasusBlok2Main.Main;
-using CasusBlok2Main.Views.MedewerkerActies;
 
 namespace CasusBlok2Main.Views
 {
@@ -33,9 +32,6 @@ namespace CasusBlok2Main.Views
             db = new MsSqlDBController();
             pls.Close();
             MedewerkerMode = false;
-
-            ZieKlachten k = new ZieKlachten();
-            k.Show();
         }
 
         private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -97,8 +93,6 @@ namespace CasusBlok2Main.Views
                 Console.WriteLine("Login success");
                 Mainframe.currentLoggedInMedewerker = loginuser;
                 //Open medewerkerwindow
-                MedewerkerPanel p = new MedewerkerPanel();
-                p.Show();
                 this.Close();
             }
 
