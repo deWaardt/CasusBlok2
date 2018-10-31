@@ -38,13 +38,35 @@ namespace CasusBlok2Main.Views.MedewerkerActies
             IngevoerdDoor.Text = klant.voornaam + " " + klant.tussenvoegsel + " " + klant.achternaam;
             Telefoonnr.Text = klant.telefoonnummer;
             Email.Text = klant.email;
+            Datum.Text = klacht.datum;
             Beschrijving.Text = klacht.data;
+            Klachttype.Text = klacht.klachttype.ToString();
+            
+            if(klacht.status == 0) { Status.Text = "✘ Onafgehandeld"; }
+            if(klacht.status == 1) { Status.Text = "✔ Afgehandeld"; }
+            //if(klacht.status == 0) { Status.Text = "Onafgehandeld"; }
         }
 
         public void RefreshKlachten()
         {
             List<Klacht> alleKlachten = db.getAllKlachten();
             Klachtendoos.ItemsSource = alleKlachten;
+        }
+
+        private void KlachtAfhandelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Klacht k = (Klacht)Klachtendoos.SelectedItem;
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Weet U zeker dat U deze klacht wilt afhandelen?", "Klacht Afhandelen.", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                k.status = 1;
+                db.editKlacht(k);
+
+                //POOR BANDAID FIX BELOW:
+                ZieKlachten zie = new ZieKlachten();
+                zie.Show();
+                this.Close();
+            }
         }
     }
 }

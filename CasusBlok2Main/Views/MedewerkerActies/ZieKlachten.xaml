@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CasusBlok2Main.Views.MedewerkerActies"
         mc:Ignorable="d"
-        Title="ZieKlachten" Height="508.602" Width="1074.511">
+        Title="ZieKlachten" Height="531.602" Width="1074.511">
     <Grid>
 
         <ListView x:Name="Klachtendoos" HorizontalAlignment="Left" Height="447" Margin="10,10,0,0" VerticalAlignment="Top" Width="483">
@@ -21,18 +21,21 @@
         <Label Content="Ingevoerd door:" HorizontalAlignment="Left" Margin="519,17,0,0" VerticalAlignment="Top"/>
         <Label Content="Datum ingevoerd:" HorizontalAlignment="Left" Margin="519,186,0,0" VerticalAlignment="Top"/>
         <TextBox IsReadOnly="True" x:Name="Datum" HorizontalAlignment="Left" Height="23" Margin="629,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" RenderTransformOrigin="0.467,1.304"/>
-        <Label Content="Beschrijving:" HorizontalAlignment="Left" Margin="519,263,0,0" VerticalAlignment="Top"/>
+        <Label Content="Beschrijving:" HorizontalAlignment="Left" Margin="519,283,0,0" VerticalAlignment="Top"/>
         <Label Content="Telefoonnummer:" HorizontalAlignment="Left" Margin="629,45,0,0" VerticalAlignment="Top"/>
         <TextBox IsReadOnly="True" x:Name="Telefoonnr" HorizontalAlignment="Left" Height="23" Margin="736,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
         <Label Content="E-Mail adres:" HorizontalAlignment="Left" Margin="629,73,0,0" VerticalAlignment="Top"/>
         <TextBox IsReadOnly="True" x:Name="Email" HorizontalAlignment="Left" Height="23" Margin="736,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="310"/>
         <Button Content="Zie alle&#xD;&#xA;klantgegevens" HorizontalAlignment="Left" Margin="943,111,0,0" VerticalAlignment="Top" Width="103" Height="40"/>
         <Separator HorizontalAlignment="Left" Height="38" Margin="519,151,0,0" VerticalAlignment="Top" Width="527" RenderTransformOrigin="0.57,0.2"/>
-        <TextBox IsReadOnly="True" x:Name="Beschrijving" HorizontalAlignment="Left" Height="129" Margin="629,268,0,0" VerticalAlignment="Top" Width="417">
+        <TextBox IsReadOnly="True" x:Name="Beschrijving" HorizontalAlignment="Left" Height="129" Margin="629,288,0,0" VerticalAlignment="Top" Width="417">
         </TextBox>
         <Label Content="Klacht type:" HorizontalAlignment="Left" Margin="519,214,0,0" VerticalAlignment="Top"/>
         <TextBox IsReadOnly="True" x:Name="Klachttype" HorizontalAlignment="Left" Height="23" Margin="629,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="417" RenderTransformOrigin="0.467,1.304"/>
-        <Button Content="Klacht afhandelen" HorizontalAlignment="Left" Margin="925,418,0,0" VerticalAlignment="Top" Width="121" Height="30"/>
+        <Button x:Name ="KlachtAfhandelButton" Content="Klacht afhandelen" HorizontalAlignment="Left" Margin="925,427,0,0" VerticalAlignment="Top" Width="121" Height="30" Click="KlachtAfhandelButton_Click"/>
+        <Label Content="Status:" HorizontalAlignment="Left" Margin="519,242,0,0" VerticalAlignment="Top"/>
+        <TextBox IsReadOnly="True" x:Name="Status" HorizontalAlignment="Left" Height="23" Margin="629,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" RenderTransformOrigin="0.467,1.304"/>
+        <CheckBox Content="Afgehandelde klachten verbergen" HorizontalAlignment="Left" Margin="10,462,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

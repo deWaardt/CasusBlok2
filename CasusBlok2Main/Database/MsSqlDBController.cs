@@ -978,11 +978,8 @@ namespace CasusBlok2Main.Database
                     klantids.Add(msrdr.GetInt32(1));
                     klachttypes.Add(msrdr.GetInt32(2));
                     datas.Add(msrdr.GetString(3));
-<<<<<<< HEAD
-=======
                     datums.Add(msrdr.GetString(4));
                     statussen.Add(msrdr.GetInt32(5));                    
->>>>>>> master
                 }
 
             }
@@ -998,11 +995,11 @@ namespace CasusBlok2Main.Database
             }
 
             int i = 0;
-            foreach (int a in klantids)
+            foreach (int a in klachtids)
             {
                 Klacht toAdd = new Klacht();
-                toAdd.klantid = a;
-                toAdd.klachtid = klantids[i];
+                toAdd.klachtid = klachtids[i];
+                toAdd.klantid = klantids[i];
                 toAdd.klachttype = klachttypes[i];
                 toAdd.data = datas[i];
                 toAdd.datum = datums[i];
@@ -1062,14 +1059,13 @@ namespace CasusBlok2Main.Database
             foreach (int a in klantids)
             {
                 Klacht toAdd = new Klacht();
-                toAdd.klantid = a;
-                toAdd.klachtid = klantids[i];
+                toAdd.klachtid = klachtids[i];
+                toAdd.klantid = klantids[i];
                 toAdd.klachttype = klachttypes[i];
                 toAdd.data = datas[i];
                 toAdd.datum = datums[i];
                 toAdd.status = statussen[i];
                 toReturn.Add(toAdd);
-                i++;
             }
 
 
