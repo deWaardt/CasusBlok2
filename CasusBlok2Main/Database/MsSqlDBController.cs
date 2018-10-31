@@ -1,4 +1,4 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,7 @@ namespace CasusBlok2Main.Database
         {
             try
             {
-                
+
                 cnn = new SqlConnection(cs);
                 cnn.Open();
 
@@ -338,6 +338,8 @@ namespace CasusBlok2Main.Database
                     toReturn.aanvraagtype = msrdr.GetInt32(1);
                     toReturn.klantid = msrdr.GetInt32(2);
                     toReturn.data = msrdr.GetString(3);
+                    toReturn.datum = msrdr.GetString(4);
+                    toReturn.status = msrdr.GetInt32(5);
                 }
 
             }
@@ -368,6 +370,8 @@ namespace CasusBlok2Main.Database
             List<int> aanvraagtypes = new List<int>();
             List<int> klantids = new List<int>();
             List<string> datas = new List<string>();
+            List<string> datums = new List<string>();
+            List<int> statussen = new List<int>();
             List<Aanvraag> toReturn = new List<Aanvraag>();
 
             try
@@ -385,6 +389,8 @@ namespace CasusBlok2Main.Database
                     aanvraagtypes.Add(msrdr.GetInt32(1));
                     klantids.Add(msrdr.GetInt32(2));
                     datas.Add(msrdr.GetString(3));
+                    datums.Add(msrdr.GetString(4));
+                    statussen.Add(msrdr.GetInt32(5));
                 }
 
             }
@@ -407,6 +413,8 @@ namespace CasusBlok2Main.Database
                 toAdd.aanvraagtype = aanvraagtypes[i];
                 toAdd.klantid = klantids[i];
                 toAdd.data = datas[i];
+                toAdd.datum = datums[i];
+                toAdd.status = statussen[i];
                 toReturn.Add(toAdd);
                 i++;
             }
@@ -696,6 +704,7 @@ namespace CasusBlok2Main.Database
                     toReturn.status = msrdr.GetInt32(2);
                     toReturn.meldingtype = msrdr.GetInt32(3);
                     toReturn.data = msrdr.GetString(4);
+                    toReturn.datum = msrdr.GetString(5);
                 }
 
             }
@@ -720,6 +729,7 @@ namespace CasusBlok2Main.Database
             List<int> statussen = new List<int>();
             List<int> meldingtypes = new List<int>();
             List<string> datas = new List<string>();
+            List<string> datums = new List<string>();
             List<Melding> toReturn = new List<Melding>();
 
             try
@@ -738,7 +748,8 @@ namespace CasusBlok2Main.Database
                     statussen.Add(msrdr.GetInt32(2));
                     meldingtypes.Add(msrdr.GetInt16(3));
                     datas.Add(msrdr.GetString(4));
-                }
+                    datums.Add(msrdr.GetString(5));
+                                    }
 
             }
             catch (SqlException ex)
@@ -761,6 +772,7 @@ namespace CasusBlok2Main.Database
                 toAdd.status = statussen[i];
                 toAdd.meldingtype = meldingtypes[i];
                 toAdd.data = datas[i];
+                toAdd.datum = datums[i];
                 toReturn.Add(toAdd);
                 i++;
             }
@@ -778,6 +790,7 @@ namespace CasusBlok2Main.Database
             List<int> statussen = new List<int>();
             List<int> meldingtypes = new List<int>();
             List<string> datas = new List<string>();
+            List<string> datums = new List<string>();
             List<Melding> toReturn = new List<Melding>();
 
             try
@@ -796,6 +809,7 @@ namespace CasusBlok2Main.Database
                     statussen.Add(msrdr.GetInt32(2));
                     meldingtypes.Add(msrdr.GetInt16(3));
                     datas.Add(msrdr.GetString(4));
+                    datums.Add(msrdr.GetString(5));
                 }
 
             }
@@ -819,6 +833,7 @@ namespace CasusBlok2Main.Database
                 toAdd.status = statussen[i];
                 toAdd.meldingtype = meldingtypes[i];
                 toAdd.data = datas[i];
+                toAdd.data = datums[i];
                 toReturn.Add(toAdd);
                 i++;
             }
@@ -918,6 +933,8 @@ namespace CasusBlok2Main.Database
                     toReturn.klantid = msrdr.GetInt32(1);
                     toReturn.klachttype = msrdr.GetInt32(2);
                     toReturn.data = msrdr.GetString(3);
+                    toReturn.datum = msrdr.GetString(4);
+                    toReturn.status = msrdr.GetInt32(5);
                 }
 
             }
@@ -942,6 +959,8 @@ namespace CasusBlok2Main.Database
             List<int> klantids = new List<int>();
             List<int> klachttypes = new List<int>();
             List<string> datas = new List<string>();
+            List<string> datums = new List<string>();
+            List<int> statussen = new List<int>();
             List<Klacht> toReturn = new List<Klacht>();
 
             try
@@ -959,6 +978,11 @@ namespace CasusBlok2Main.Database
                     klantids.Add(msrdr.GetInt32(1));
                     klachttypes.Add(msrdr.GetInt32(2));
                     datas.Add(msrdr.GetString(3));
+<<<<<<< HEAD
+=======
+                    datums.Add(msrdr.GetString(4));
+                    statussen.Add(msrdr.GetInt32(5));                    
+>>>>>>> master
                 }
 
             }
@@ -981,6 +1005,8 @@ namespace CasusBlok2Main.Database
                 toAdd.klachtid = klantids[i];
                 toAdd.klachttype = klachttypes[i];
                 toAdd.data = datas[i];
+                toAdd.datum = datums[i];
+                toAdd.status = statussen[i];
                 toReturn.Add(toAdd);
                 i++;
             }
@@ -997,6 +1023,8 @@ namespace CasusBlok2Main.Database
             List<int> klantids = new List<int>();
             List<int> klachttypes = new List<int>();
             List<string> datas = new List<string>();
+            List<string> datums = new List<string>();
+            List<int> statussen = new List<int>();
             List<Klacht> toReturn = new List<Klacht>();
 
             try
@@ -1014,6 +1042,8 @@ namespace CasusBlok2Main.Database
                     klantids.Add(msrdr.GetInt32(1));
                     klachttypes.Add(msrdr.GetInt32(2));
                     datas.Add(msrdr.GetString(3));
+                    datums.Add(msrdr.GetString(4));
+                    statussen.Add(msrdr.GetInt32(5));
                 }
 
             }
@@ -1036,6 +1066,8 @@ namespace CasusBlok2Main.Database
                 toAdd.klachtid = klantids[i];
                 toAdd.klachttype = klachttypes[i];
                 toAdd.data = datas[i];
+                toAdd.datum = datums[i];
+                toAdd.status = statussen[i];
                 toReturn.Add(toAdd);
                 i++;
             }
@@ -1048,8 +1080,8 @@ namespace CasusBlok2Main.Database
 
         public void pushKlant(Klant usr)
         {
-            string stm = "INSERT INTO Klant (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('"+usr.email + "','" + usr.wachtwoord+"','"+usr.voornaam + "','" +usr.tussenvoegsel
-                + "','" +usr.achternaam + "','" +usr.geboortedatum + "','" +usr.telefoonnummer+"')";
+            string stm = "INSERT INTO Klant (email, wachtwoord, voornaam, tussenvoegsel, achternaam, geboortedatum, telefoonnummer) VALUES('" + usr.email + "','" + usr.wachtwoord + "','" + usr.voornaam + "','" + usr.tussenvoegsel
+                + "','" + usr.achternaam + "','" + usr.geboortedatum + "','" + usr.telefoonnummer + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1072,7 +1104,8 @@ namespace CasusBlok2Main.Database
 
         public void pushAanvraag(Aanvraag aanvraag)
         {
-            string stm = "INSERT INTO Aanvraag (aanvraagtype, klantid, data) VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "')";
+            string stm = "INSERT INTO Aanvraag (aanvraagtype, klantid, data,, datum, status) " +
+                "VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "," +aanvraag.datum +","+aanvraag.status + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1129,8 +1162,8 @@ namespace CasusBlok2Main.Database
 
         public void pushMelding(Melding melding)
         {
-            string stm = "INSERT INTO Melding (klantid, status, meldingtype, data) VALUES('" + melding.klantid + "','" + melding.status + "','" +
-                melding.meldingtype + "','" + melding.data + "')";
+            string stm = "INSERT INTO Melding (klantid, status, meldingtype, data, datum) VALUES('" + melding.klantid + "','" + melding.status + "','" +
+                melding.meldingtype + "','" + melding.data + "," + melding.datum + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1177,8 +1210,9 @@ namespace CasusBlok2Main.Database
 
         public void editAanvraag(Aanvraag aanvraag)
         {
-            string stm = "UPDATE Aanvraag SET aanvraagtype='" + aanvraag.aanvraagtype + "',klantid='" + aanvraag.klantid + "',data='" + aanvraag.data + 
-                "' WHERE aanvraagnummer = '"+aanvraag.aanvraagnummer+"'";
+            string stm = "UPDATE Aanvraag SET aanvraagtype='" + aanvraag.aanvraagtype + "',klantid='" + aanvraag.klantid + "',data='" + aanvraag.data +
+                "',status='"+aanvraag.status+
+                "' WHERE aanvraagnummer = '" + aanvraag.aanvraagnummer + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1190,7 +1224,7 @@ namespace CasusBlok2Main.Database
         public void editBelmoment(Belmoment belmoment)
         {
             string stm = "UPDATE Belmoment SET klantid='" + belmoment.klantid + "',tijdstip='" + belmoment.tijdstip + "',datum='" + belmoment.datum + "',status='" +
-                belmoment.status + "',notitie='" + belmoment.notitie +"' WHERE (tijdstip = '"+belmoment.tijdstip+"' AND datum = '"+belmoment.datum+"' AND klantid = '"+belmoment.klantid+ "')";
+                belmoment.status + "',notitie='" + belmoment.notitie + "' WHERE (tijdstip = '" + belmoment.tijdstip + "' AND datum = '" + belmoment.datum + "' AND klantid = '" + belmoment.klantid + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1213,7 +1247,8 @@ namespace CasusBlok2Main.Database
 
         public void editKlacht(Klacht klacht)
         {
-            string stm = "UPDATE Klacht SET klantid='" + klacht.klantid + "',klachttype='" + klacht.klachttype + "',data='" + klacht.data + "' WHERE klachtid='"+klacht.klachtid+"'";
+            string stm = "UPDATE Klacht SET klantid='" + klacht.klantid + "',klachttype='" + klacht.klachttype + "',data='" + klacht.data + "',status='" + klacht.status +
+                "' WHERE klachtid='" + klacht.klachtid + "'";
 
             Console.WriteLine(stm);
 
@@ -1240,7 +1275,7 @@ namespace CasusBlok2Main.Database
         public void editMelding(Melding melding)
         {
             string stm = "UPDATE Melding SET klantid='" + melding.klantid + "',status='" + melding.status + "',meldingtype='" +
-                melding.meldingtype + "',data='" + melding.data + "' WHERE meldingnummer = '"+melding.meldingnummer+"'";
+                melding.meldingtype + "',data='" + melding.data + "' WHERE meldingnummer = '" + melding.meldingnummer + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1251,7 +1286,7 @@ namespace CasusBlok2Main.Database
 
         public void editVerbruik(Verbruik verbruik)
         {
-            string stm = "UPDATE Verbruik SET meterstand='" + verbruik.meterstand + "'WHERE klantid='"+verbruik.klantid+"'";
+            string stm = "UPDATE Verbruik SET meterstand='" + verbruik.meterstand + "'WHERE klantid='" + verbruik.klantid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1264,7 +1299,7 @@ namespace CasusBlok2Main.Database
 
         public void delKlant(Klant usr)
         {
-            string stm = "DELETE FROM Klant WHERE klantid ='"+usr.klantid+"'";
+            string stm = "DELETE FROM Klant WHERE klantid ='" + usr.klantid + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1297,7 +1332,7 @@ namespace CasusBlok2Main.Database
 
         public void delBelmoment(Belmoment bel)
         {
-            string stm = "DELETE FROM Belmoment WHERE tijdstip ='" + bel.tijdstip + "' AND datum='"+bel.datum+"'";
+            string stm = "DELETE FROM Belmoment WHERE tijdstip ='" + bel.tijdstip + "' AND datum='" + bel.datum + "'";
 
             cnn = new SqlConnection(cs);
             cnn.Open();

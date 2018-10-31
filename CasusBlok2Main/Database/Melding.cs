@@ -13,5 +13,6 @@ namespace CasusBlok2Main.Database
         public int status { get; set; }
         public int meldingtype { get; set; }
         public string data { get; set; }
+        public string datum { get; set; }
     }
 }
