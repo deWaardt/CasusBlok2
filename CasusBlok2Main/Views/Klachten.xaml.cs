@@ -37,7 +37,10 @@ namespace CasusBlok2Main.Views
             else if (Dropdownboxcatagorie.Text == "Anders") { klacht.klachttype = 4; }
             klacht.klantid = Mainframe.currentLoggedIn.klantid;
             klacht.data = KlachtTxtbx.Text;
+            //klacht.datum = DateTime.Now.ToString();
+            //klacht.status = 0;
             msdb.pushKlacht(klacht);
+            
         }
 
         private void KlachtenVragenBtn_Click(object sender, RoutedEventArgs e)

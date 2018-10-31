@@ -63,8 +63,10 @@ namespace CasusBlok2Main.Views
         private void VerstuurBtn_Click(object sender, RoutedEventArgs e)
         {
             Aanvraag aanvraag = new Aanvraag();
-            aanvraag.aanvraagtype = 2;
+            aanvraag.aanvraagtype = 0;
             aanvraag.data = VraagTxtbx.Text;
+            //aanvraag.datum = DateTime.Now.ToString();
+            //aanvraag.status = 0;
             DbController db = new DbController();
             msdb.pushAanvraag(aanvraag);
         }
