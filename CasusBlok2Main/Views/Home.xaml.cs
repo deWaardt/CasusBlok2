@@ -33,7 +33,7 @@ namespace CasusBlok2Main.Views
 
         private void AbonnementenBtn_Click(object sender, RoutedEventArgs e)
         {
-            Abbonementen abboscherm = new Abbonementen();
+            AbonnementenInfo abboscherm = new AbonnementenInfo();
             abboscherm.Show();
             this.Close();
         }

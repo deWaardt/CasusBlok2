@@ -4,15 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CasusBlok2Main.Views"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="AbonnementenInfo" Height="450" Width="800">
     <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="257" Margin="25,123,0,0" VerticalAlignment="Top" Width="695"/>
         <Label Content="Huidige abonnement" HorizontalAlignment="Left" Margin="545,141,0,0" VerticalAlignment="Top" Width="129"/>
-        <Button x:Name="Verlengen" Content="Verlengen" HorizontalAlignment="Left" Margin="600,189,0,0" VerticalAlignment="Top" Width="74"/>
-        <Button x:Name="Wijzigen" Content="Wijzigen" HorizontalAlignment="Left" Margin="600,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="Beëindigen" Content="Beëindigen" HorizontalAlignment="Left" Margin="601,276,0,0" VerticalAlignment="Top" Width="74"/>
-        <Label Content="Abonnement informatie" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top" Height="205" Width="460"/>
+        <Button x:Name="AboVerlengen" Content="Verlengen" HorizontalAlignment="Left" Margin="600,189,0,0" VerticalAlignment="Top" Width="74"/>
+        <Button x:Name="AboWijzigen" Content="Wijzigen" HorizontalAlignment="Left" Margin="600,232,0,0" VerticalAlignment="Top" Width="75" Click="AboWijzigen_Click"/>
+        <Button x:Name="AboBeëindigen" Content="Beëindigen" HorizontalAlignment="Left" Margin="601,276,0,0" VerticalAlignment="Top" Width="74" Click="AboBeëindigen_Click"/>
+        <Label x:Name="AboinfoLbl" Content="Abonnement informatie" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top" Height="205" Width="460"/>
 
     </Grid>
 </Window>

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CasusBlok2Main.Database;
+using CasusBlok2Main.Main;
 
 namespace CasusBlok2Main.Views
 {
@@ -19,9 +21,13 @@ namespace CasusBlok2Main.Views
     /// </summary>
     public partial class Abbonementen : Window
     {
+        MsSqlDBController db;
+
         public Abbonementen()
         {
             InitializeComponent();
+            db = new MsSqlDBController();
+
         }
 
         //test
@@ -75,6 +81,71 @@ namespace CasusBlok2Main.Views
             //   this.Close();
         }
 
+        private void OptieA_Click(object sender, RoutedEventArgs e)
+        {
+            //check of klant abo heeft; if abo dan heeftabo >0;
+            KlantAbonnement heeftabbo = db.getKlantAbonnementVanKlant(Main.Mainframe.currentLoggedIn.klantid);
+            if (heeftabbo.abonnementid == 0)
+            {
+                //indien nog geen abo, push nieuw abo :
+                KlantAbonnement abonnee = new KlantAbonnement();
+                abonnee.abonnementid = 1;
+                abonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
+                db.pushKlantAbonnement(abonnee);
+            }
+            else if (heeftabbo.abonnementid != 0)
+            {
+                //edit functie voor abo
+                KlantAbonnement editabonnee = new KlantAbonnement();
+                editabonnee.abonnementid = 1;
+                editabonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
+                db.editKlantAbonnement(editabonnee);
+            }
+        }
 
+        private void OptieB_Click(object sender, RoutedEventArgs e)
+        {
+            //check of klant abo heeft; if abo dan heeftabo >0;
+            KlantAbonnement heeftabbo = db.getKlantAbonnementVanKlant(Main.Mainframe.currentLoggedIn.klantid);
+            if (heeftabbo.abonnementid == 0)
+            {
+                //indien nog geen abo, push nieuw abo :
+                KlantAbonnement abonnee = new KlantAbonnement();
+                abonnee.abonnementid = 2;
+                abonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
+                db.pushKlantAbonnement(abonnee);
+            }
+            else if (heeftabbo.abonnementid != 0)
+            {
+                //edit functie voor abo
+                KlantAbonnement editabonnee = new KlantAbonnement();
+                editabonnee.abonnementid = 2;
+                editabonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
+                db.editKlantAbonnement(editabonnee);
+            }
+        }
+
+        private void OptieC_Click(object sender, RoutedEventArgs e)
+        {
+            //check of klant abo heeft; if abo dan heeftabo >0;
+            KlantAbonnement heeftabbo = db.getKlantAbonnementVanKlant(Main.Mainframe.currentLoggedIn.klantid);
+            if (heeftabbo.abonnementid == 0)
+            {
+                //indien nog geen abo, push nieuw abo :
+                KlantAbonnement abonnee = new KlantAbonnement();
+                abonnee.abonnementid = 3;
+                abonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
+                db.pushKlantAbonnement(abonnee);
+            }
+            else if (heeftabbo.abonnementid != 0)
+            {
+                //edit functie voor abo
+                KlantAbonnement editabonnee = new KlantAbonnement();
+                editabonnee.abonnementid = 3;
+                editabonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
+                db.editKlantAbonnement(editabonnee);
+            }
+        }
     }
 }
+    

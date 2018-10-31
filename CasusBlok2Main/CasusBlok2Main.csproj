@@ -82,13 +82,10 @@
     </Compile>
     <Compile Include="Views\Abonnementen.xaml.cs">
       <DependentUpon>Abonnementen.xaml</DependentUpon>
-     </Compile>
+    </Compile>
     <Compile Include="Views\AbonnementenInfo.xaml.cs">
       <DependentUpon>AbonnementenInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdresWijzigen.xaml.cs">
-      <DependentUpon>AdresWijzigen.xaml</DependentUpon>
-      </Compile>
     <Compile Include="Views\Accountv2.xaml.cs">
       <DependentUpon>Accountv2.xaml</DependentUpon>
     </Compile>
@@ -136,10 +133,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AbonnementenInfo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\AdresWijzigen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
