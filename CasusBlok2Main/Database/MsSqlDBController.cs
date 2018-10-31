@@ -749,7 +749,7 @@ namespace CasusBlok2Main.Database
                     meldingtypes.Add(msrdr.GetInt16(3));
                     datas.Add(msrdr.GetString(4));
                     datums.Add(msrdr.GetString(5));
-                                    }
+                }
 
             }
             catch (SqlException ex)
@@ -979,7 +979,7 @@ namespace CasusBlok2Main.Database
                     klachttypes.Add(msrdr.GetInt32(2));
                     datas.Add(msrdr.GetString(3));
                     datums.Add(msrdr.GetString(4));
-                    statussen.Add(msrdr.GetInt32(5));                    
+                    statussen.Add(msrdr.GetInt32(5));
                 }
 
             }
@@ -995,11 +995,11 @@ namespace CasusBlok2Main.Database
             }
 
             int i = 0;
-            foreach (int a in klantids)
+            foreach (int a in klachtids)
             {
                 Klacht toAdd = new Klacht();
-                toAdd.klantid = a;
-                toAdd.klachtid = klantids[i];
+                toAdd.klachtid = klachtids[i];
+                toAdd.klantid = klantids[i];
                 toAdd.klachttype = klachttypes[i];
                 toAdd.data = datas[i];
                 toAdd.datum = datums[i];
@@ -1059,14 +1059,13 @@ namespace CasusBlok2Main.Database
             foreach (int a in klantids)
             {
                 Klacht toAdd = new Klacht();
-                toAdd.klantid = a;
-                toAdd.klachtid = klantids[i];
+                toAdd.klachtid = klachtids[i];
+                toAdd.klantid = klantids[i];
                 toAdd.klachttype = klachttypes[i];
                 toAdd.data = datas[i];
                 toAdd.datum = datums[i];
                 toAdd.status = statussen[i];
                 toReturn.Add(toAdd);
-                i++;
             }
 
 
@@ -1102,7 +1101,7 @@ namespace CasusBlok2Main.Database
         public void pushAanvraag(Aanvraag aanvraag)
         {
             string stm = "INSERT INTO Aanvraag (aanvraagtype, klantid, data,, datum, status) " +
-                "VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "," +aanvraag.datum +","+aanvraag.status + "')";
+                "VALUES('" + aanvraag.aanvraagtype + "','" + aanvraag.klantid + "','" + aanvraag.data + "," + aanvraag.datum + "," + aanvraag.status + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1208,7 +1207,7 @@ namespace CasusBlok2Main.Database
         public void editAanvraag(Aanvraag aanvraag)
         {
             string stm = "UPDATE Aanvraag SET aanvraagtype='" + aanvraag.aanvraagtype + "',klantid='" + aanvraag.klantid + "',data='" + aanvraag.data +
-                "',status='"+aanvraag.status+
+                "',status='" + aanvraag.status +
                 "' WHERE aanvraagnummer = '" + aanvraag.aanvraagnummer + "'";
 
             cnn = new SqlConnection(cs);
