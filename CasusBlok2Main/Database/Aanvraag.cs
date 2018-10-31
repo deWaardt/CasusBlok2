@@ -12,5 +12,7 @@ namespace CasusBlok2Main.Database
         public int aanvraagtype { get; set; }
         public int klantid { get; set; }
         public string data { get; set; }
+        public string datum { get; set; }
+        public int status { get; set; }
     }
 }
