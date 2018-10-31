@@ -59,6 +59,13 @@ namespace CasusBlok2Main.Views
             this.Close();
         }
 
+        private void VeranderWachtwoordBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WachtwoordChange VeranderWachtwoord = new WachtwoordChange();
+            VeranderWachtwoord.Show();
+            this.Close();
+        }
+
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
             //    Settings settscherm = new Settings();

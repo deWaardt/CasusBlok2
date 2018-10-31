@@ -59,6 +59,13 @@ namespace CasusBlok2Main.Views
             this.Close();
         }
 
+        private void MeldingenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Accountv2 accscherm = new Accountv2();
+            accscherm.Show();
+            this.Close();
+        }
+
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
             //    Settings settscherm = new Settings();
@@ -72,5 +79,6 @@ namespace CasusBlok2Main.Views
             //   verhscherm.Show();
             //   this.Close();
         }
+
     }
 }
