@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CasusBlok2Main.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,59 +12,57 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using CasusBlok2Main.Database;
-using CasusBlok2Main.Main;
 
 namespace CasusBlok2Main.Views.MedewerkerActies
 {
     /// <summary>
-    /// Interaction logic for ZieKlachten.xaml
+    /// Interaction logic for ZieAanvragen.xaml
     /// </summary>
-    public partial class ZieKlachten : Window
+    public partial class ZieAanvragen : Window
     {
         MsSqlDBController db;
-        public ZieKlachten()
+        public ZieAanvragen()
         {
             InitializeComponent();
             db = new MsSqlDBController();
-            RefreshKlachten();
-            Klachtendoos.SelectionChanged += Klachtendoos_SelectionChanged;
+            RefreshAanvragen();
+            Aanvragendoos.SelectionChanged += Aanvragendoos_SelectionChanged;
         }
 
-        private void Klachtendoos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Aanvragendoos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Klacht klacht = (Klacht)Klachtendoos.SelectedItem;
-            Klant klant = db.getUserByID(klacht.klantid);
+            Aanvraag aanvraag = (Aanvraag)Aanvragendoos.SelectedItem;
+            Klant klant = db.getUserByID(aanvraag.klantid);
 
             IngevoerdDoor.Text = klant.voornaam + " " + klant.tussenvoegsel + " " + klant.achternaam;
             Telefoonnr.Text = klant.telefoonnummer;
             Email.Text = klant.email;
-            Datum.Text = klacht.datum;
-            Beschrijving.Text = klacht.data;
-            Klachttype.Text = klacht.klachttype.ToString();
-            
-            if(klacht.status == 0) { Status.Text = "✘ Onafgehandeld"; }
-            if(klacht.status == 1) { Status.Text = "✔ Afgehandeld"; }
+            Datum.Text = aanvraag.datum;
+            Beschrijving.Text = aanvraag.data;
+            Klachttype.Text = aanvraag.aanvraagtype.ToString();
+
+            if (aanvraag.status == 0) { Status.Text = "✘ Onafgehandeld"; }
+            if (aanvraag.status == 1) { Status.Text = "✔ Afgehandeld"; }
             //if(klacht.status == 0) { Status.Text = "Onafgehandeld"; }
         }
 
-        public void RefreshKlachten()
+        public void RefreshAanvragen()
         {
-            List<Klacht> alleKlachten = db.getAllKlachten();
-            Klachtendoos.ItemsSource = alleKlachten;
+            List<Aanvraag> alleAanvragen = db.getAllAanvragen();
+            Aanvragendoos.ItemsSource = alleAanvragen;
         }
 
-        private void KlachtAfhandelButton_Click(object sender, RoutedEventArgs e)
+        private void AanvraagAfhandelButton_Click(object sender, RoutedEventArgs e)
         {
-            Klacht k = (Klacht)Klachtendoos.SelectedItem;
+            Aanvraag a = (Aanvraag)Aanvragendoos.SelectedItem;
             MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Weet U zeker dat U deze klacht wilt afhandelen?", "Klacht Afhandelen.", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
-                k.status = 1;
-                db.editKlacht(k);
+                a.status = 1;
+                db.editAanvraag(a);
 
                 //POOR BANDAID FIX BELOW:
-                ZieKlachten zie = new ZieKlachten();
+                ZieAanvragen zie = new ZieAanvragen();
                 zie.Show();
                 this.Close();
             }
@@ -71,7 +70,7 @@ namespace CasusBlok2Main.Views.MedewerkerActies
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Klacht a = (Klacht)Klachtendoos.SelectedItem;
+            Aanvraag a = (Aanvraag)Aanvragendoos.SelectedItem;
             Klant k = db.getUserByID(a.klantid);
             ZieKlantInfo ziek = new ZieKlantInfo(k.klantid);
             ziek.Show();

@@ -87,8 +87,14 @@
     <Compile Include="Views\loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MedewerkerActies\ZieAanvragen.xaml.cs">
+      <DependentUpon>ZieAanvragen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MedewerkerActies\ZieKlachten.xaml.cs">
       <DependentUpon>ZieKlachten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedewerkerActies\ZieKlantInfo.xaml.cs">
+      <DependentUpon>ZieKlantInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MedewerkerPanel.xaml.cs">
       <DependentUpon>MedewerkerPanel.xaml</DependentUpon>
@@ -119,7 +125,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MedewerkerActies\ZieAanvragen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MedewerkerActies\ZieKlachten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedewerkerActies\ZieKlantInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

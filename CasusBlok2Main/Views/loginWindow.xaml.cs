@@ -34,8 +34,8 @@ namespace CasusBlok2Main.Views
             pls.Close();
             MedewerkerMode = false;
 
-            ZieKlachten k = new ZieKlachten();
-            k.Show();
+            ZieAanvragen v = new ZieAanvragen();
+            v.Show();
         }
 
         private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)

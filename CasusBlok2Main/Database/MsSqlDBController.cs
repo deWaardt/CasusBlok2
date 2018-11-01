@@ -409,7 +409,65 @@ namespace CasusBlok2Main.Database
             foreach (int a in aanvraagnummers)
             {
                 Aanvraag toAdd = new Aanvraag();
-                toAdd.aanvraagnummer = a;
+                toAdd.aanvraagnummer = aanvraagnummers[i];
+                toAdd.aanvraagtype = aanvraagtypes[i];
+                toAdd.klantid = klantids[i];
+                toAdd.data = datas[i];
+                toAdd.datum = datums[i];
+                toAdd.status = statussen[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+        public List<Aanvraag> getAllAanvragen()
+        {
+            List<int> aanvraagnummers = new List<int>();
+            List<int> aanvraagtypes = new List<int>();
+            List<int> klantids = new List<int>();
+            List<string> datas = new List<string>();
+            List<string> datums = new List<string>();
+            List<int> statussen = new List<int>();
+            List<Aanvraag> toReturn = new List<Aanvraag>();
+
+            try
+            {
+                cnn = new SqlConnection(cs);
+                cnn.Open();
+
+                string stm = "SELECT * FROM Aanvraag";
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
+
+                while (msrdr.Read())
+                {
+                    aanvraagnummers.Add(msrdr.GetInt32(0));
+                    aanvraagtypes.Add(msrdr.GetInt32(1));
+                    klantids.Add(msrdr.GetInt32(2));
+                    datas.Add(msrdr.GetString(3));
+                    datums.Add(msrdr.GetString(4));
+                    statussen.Add(msrdr.GetInt32(5));
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in aanvraagnummers)
+            {
+                Aanvraag toAdd = new Aanvraag();
+                toAdd.aanvraagnummer = aanvraagnummers[i];
                 toAdd.aanvraagtype = aanvraagtypes[i];
                 toAdd.klantid = klantids[i];
                 toAdd.data = datas[i];
