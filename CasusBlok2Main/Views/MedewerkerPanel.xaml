@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MedewerkerPanel" Height="219" Width="389">
     <Grid>
-        <Button Content="Openstaande&#xD;&#xA;klachten" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="57,45,0,0" Height="40" Click="OpenKlachten"/>
-        <Button Content="Openstaande&#xA;vragen" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="57,90,0,0" Height="40"/>
-        <Button Content="Geplande&#xD;&#xA;belmomenten" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="204,45,0,0" Height="40"/>
-        <Button Content="Openstaande&#xD;&#xA;Aanvragen" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="204,90,0,0" Height="40" RenderTransformOrigin="1.76,0.625"/>
+        <Button x:Name="KlachtenKnop" Content="Openstaande&#xD;&#xA;klachten" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="57,45,0,0" Height="40" Click="OpenKlachten"/>
+        <Button x:Name="Belmomenteknop" Content="Geplande&#xD;&#xA;belmomenten" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="204,45,0,0" Height="40" Click="Belmomenteknop_Click"/>
+        <Button x:Name="Aanvragenknop" Content="Openstaande&#xD;&#xA;Aanvragen" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="100" Margin="204,90,0,0" Height="40" RenderTransformOrigin="1.76,0.625" Click="Aanvragenknop_Click"/>
+        <Button x:Name="KlantInfoKnop" Content="Zie Klantinfo" HorizontalAlignment="Left" Margin="57,92,0,0" VerticalAlignment="Top" Width="100" Height="38" Click="KlantInfoKnop_Click"/>
     </Grid>
 </Window>

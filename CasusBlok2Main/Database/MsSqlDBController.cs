@@ -520,11 +520,12 @@ namespace CasusBlok2Main.Database
         {
             if (klantid == -1) { klantid = Mainframe.currentLoggedIn.klantid; }
 
-            List<int> klantids = new List<int>();
+            List<int> belmomentids = new List<int>();
             List<string> tijdstippen = new List<string>();
             List<string> datums = new List<string>();
             List<int> statussen = new List<int>();
-            List<string> notities = new List<string>();
+            List<int> klantids = new List<int>();
+            List<string> datas = new List<string>();
             List<Belmoment> toReturn = new List<Belmoment>();
 
             try
@@ -538,11 +539,12 @@ namespace CasusBlok2Main.Database
 
                 while (msrdr.Read())
                 {
-                    klantids.Add(msrdr.GetInt32(0));
+                    belmomentids.Add(msrdr.GetInt32(0));
                     tijdstippen.Add(msrdr.GetString(1));
                     datums.Add(msrdr.GetString(2));
                     statussen.Add(msrdr.GetInt32(3));
-                    notities.Add(msrdr.GetString(4));
+                    klantids.Add(msrdr.GetInt32(4));
+                    datas.Add(msrdr.GetString(5));
                 }
 
             }
@@ -561,11 +563,71 @@ namespace CasusBlok2Main.Database
             foreach (int a in klantids)
             {
                 Belmoment toAdd = new Belmoment();
-                toAdd.klantid = a;
+                toAdd.belmomentid = belmomentids[i];
                 toAdd.tijdstip = tijdstippen[i];
                 toAdd.datum = datums[i];
                 toAdd.status = statussen[i];
-                toAdd.notitie = notities[i];
+                toAdd.klantid = klantids[i];
+                toAdd.data = datas[i];
+                toReturn.Add(toAdd);
+                i++;
+            }
+
+
+            return toReturn;
+        }
+
+        public List<Belmoment> getAllBelmomenten()
+        {
+            List<int> belmomentids = new List<int>();
+            List<string> tijdstippen = new List<string>();
+            List<string> datums = new List<string>();
+            List<int> statussen = new List<int>();
+            List<int> klantids = new List<int>();
+            List<string> datas = new List<string>();
+            List<Belmoment> toReturn = new List<Belmoment>();
+
+            try
+            {
+                cnn = new SqlConnection(cs);
+                cnn.Open();
+
+                string stm = "SELECT * FROM Belmoment";
+                SqlCommand mscmd = new SqlCommand(stm, cnn);
+                msrdr = mscmd.ExecuteReader();
+
+                while (msrdr.Read())
+                {
+                    belmomentids.Add(msrdr.GetInt32(0));
+                    tijdstippen.Add(msrdr.GetString(1));
+                    datums.Add(msrdr.GetString(2));
+                    statussen.Add(msrdr.GetInt32(3));
+                    klantids.Add(msrdr.GetInt32(4));
+                    datas.Add(msrdr.GetString(5));
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+                //return null;
+            }
+            finally
+            {
+                if (msrdr != null) { msrdr.Close(); }
+                if (cnn != null) { cnn.Close(); }
+            }
+
+            int i = 0;
+            foreach (int a in klantids)
+            {
+                Belmoment toAdd = new Belmoment();
+                toAdd.belmomentid = belmomentids[i];
+                toAdd.tijdstip = tijdstippen[i];
+                toAdd.datum = datums[i];
+                toAdd.status = statussen[i];
+                toAdd.klantid = klantids[i];
+                toAdd.data = datas[i];
                 toReturn.Add(toAdd);
                 i++;
             }
@@ -1170,8 +1232,8 @@ namespace CasusBlok2Main.Database
 
         public void pushBelmoment(Belmoment belmoment)
         {
-            string stm = "INSERT INTO Belmoment (klantid, tijstip, datum, status, notitie) VALUES('" + belmoment.klantid + "','" + belmoment.tijdstip + "','" + belmoment.datum + "','" +
-                belmoment.status + "','" + belmoment.notitie + "')";
+            string stm = "INSERT INTO Belmoment (klantid, tijstip, datum, status, data) VALUES('" + belmoment.klantid + "','" + belmoment.tijdstip + "','" + belmoment.datum + "','" +
+                belmoment.status + "','" + belmoment.data + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();
@@ -1278,7 +1340,7 @@ namespace CasusBlok2Main.Database
         public void editBelmoment(Belmoment belmoment)
         {
             string stm = "UPDATE Belmoment SET klantid='" + belmoment.klantid + "',tijdstip='" + belmoment.tijdstip + "',datum='" + belmoment.datum + "',status='" +
-                belmoment.status + "',notitie='" + belmoment.notitie + "' WHERE (tijdstip = '" + belmoment.tijdstip + "' AND datum = '" + belmoment.datum + "' AND klantid = '" + belmoment.klantid + "')";
+                belmoment.status + "',data='" + belmoment.data + "' WHERE (tijdstip = '" + belmoment.tijdstip + "' AND datum = '" + belmoment.datum + "' AND klantid = '" + belmoment.klantid + "')";
 
             cnn = new SqlConnection(cs);
             cnn.Open();

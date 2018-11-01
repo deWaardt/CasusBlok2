@@ -33,9 +33,6 @@ namespace CasusBlok2Main.Views
             db = new MsSqlDBController();
             pls.Close();
             MedewerkerMode = false;
-
-            ZieAanvragen v = new ZieAanvragen();
-            v.Show();
         }
 
         private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)

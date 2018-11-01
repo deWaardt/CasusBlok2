@@ -30,5 +30,23 @@ namespace CasusBlok2Main.Views
             ZieKlachten klachten = new ZieKlachten();
             klachten.Show();
         }
+
+        private void Belmomenteknop_Click(object sender, RoutedEventArgs e)
+        {
+            ZieBelmomenten belmomenten = new ZieBelmomenten();
+            belmomenten.Show();
+        }
+
+        private void Aanvragenknop_Click(object sender, RoutedEventArgs e)
+        {
+            ZieAanvragen aanvragen = new ZieAanvragen();
+            aanvragen.Show();
+        }
+
+        private void KlantInfoKnop_Click(object sender, RoutedEventArgs e)
+        {
+            DialogZieGebruiker zieGebruiker = new DialogZieGebruiker();
+            zieGebruiker.Show();
+        }
     }
 }

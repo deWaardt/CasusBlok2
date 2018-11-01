@@ -44,11 +44,14 @@ namespace CasusBlok2Main.Views.MedewerkerActies
 
         public void FillListViews()
         {
-            List<Aanvraag> alleAanvragen = db.getAllAanvragen();
+            List<Aanvraag> alleAanvragen = db.getAllAanvragenVanKlant(k.klantid);
             Aanvragendoos.ItemsSource = alleAanvragen;
 
-            List<Klacht> alleKlachten = db.getAllKlachten();
+            List<Klacht> alleKlachten = db.getAllKlachtenVanKlant(k.klantid);
             Klachtendoos.ItemsSource = alleKlachten;
+
+            List<Belmoment> alleBelmomenten = db.getAllBelmomentenVanKlant(k.klantid);
+            Belmomentendoos.ItemsSource = alleBelmomenten;
         }
     }
 }

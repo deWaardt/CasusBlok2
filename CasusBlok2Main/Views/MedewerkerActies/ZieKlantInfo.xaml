@@ -25,7 +25,10 @@
         <ListView x:Name="Belmomentendoos" HorizontalAlignment="Left" Height="106" Margin="505,61,0,0" VerticalAlignment="Top" Width="513">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Width="50" Header="ID" DisplayMemberBinding="{Binding belmomentid}" />
+                    <GridViewColumn Width="70" Header="Datum" DisplayMemberBinding="{Binding datum}" />
+                    <GridViewColumn Width="50" Header="Tijdstip" DisplayMemberBinding="{Binding tijdstip}" />
+                    <GridViewColumn Width="290" Header="Beschrijving" DisplayMemberBinding="{Binding data}" />
                 </GridView>
             </ListView.View>
         </ListView>
