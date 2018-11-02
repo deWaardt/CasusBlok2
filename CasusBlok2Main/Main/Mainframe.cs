@@ -11,6 +11,7 @@ namespace CasusBlok2Main.Main
     {
         //DbController db = new DbController();
         public static Klant currentLoggedIn;
+        public static Medewerker currentLoggedInMedewerker;
 
         //public void processLogin()
         //{

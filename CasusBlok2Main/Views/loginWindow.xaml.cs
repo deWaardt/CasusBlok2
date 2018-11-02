@@ -23,6 +23,7 @@ namespace CasusBlok2Main.Views
     {
         MsSqlDBController db;
         loginIncorrect fout;
+        bool MedewerkerMode;
         public loginWindow()
         {
             InitializeComponent();
@@ -30,7 +31,11 @@ namespace CasusBlok2Main.Views
             pls.Show();
             db = new MsSqlDBController();
             pls.Close();
+<<<<<<< HEAD
 
+=======
+            MedewerkerMode = false;
+>>>>>>> master
         }
 
         private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -39,8 +44,10 @@ namespace CasusBlok2Main.Views
             this.Focusable = true;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void LoginKlant(object sender, RoutedEventArgs e)
         {
+            if(MedewerkerMode == true) { LoginMedewerker(sender, e); return; }
+            Console.WriteLine("==== EXEC LOGINKLANT");
             string name = usrname.Text;
             string pass = password.Text;
 
@@ -67,6 +74,53 @@ namespace CasusBlok2Main.Views
                 this.Focusable = false;
                 
             }
+        }
+
+        private void SwitchtoMederwerker(object sender, RoutedEventArgs e)
+        {
+            TerugKnop.Visibility = Visibility.Visible;
+            MedewerkerKnop.Visibility = Visibility.Hidden;
+            InlogKnop.Content = "Inloggen als medewerker";
+            //InlogKnop.Click += LoginMedewerker;
+            MedewerkerMode = true;
+        }
+
+        private void LoginMedewerker(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("==== EXEC LOGINMEDEWERKER");
+            string name = usrname.Text;
+            string pass = password.Text;
+
+            if (name == "" || pass == "") { return; }
+            Medewerker loginuser = db.getMedewerker(name);
+
+            if (pass == loginuser.wachtwoord)
+            {
+                Console.WriteLine("Login success");
+                Mainframe.currentLoggedInMedewerker = loginuser;
+                //Open medewerkerwindow
+                this.Close();
+            }
+
+            else
+            {
+                fout = new loginIncorrect();
+                fout.Closing += Fout_Closing;
+                fout.Show();
+                this.IsEnabled = false;
+                this.Focusable = false;
+
+            }
+        }
+
+        private void TerugNaarKlant(object sender, RoutedEventArgs e)
+        {
+            TerugKnop.Visibility = Visibility.Hidden;
+            MedewerkerKnop.Visibility = Visibility.Visible;
+            InlogKnop.Content = "Inloggen";
+            //InlogKnop.Click += LoginKlant;
+            MedewerkerMode = false;
+
         }
     }
 }

@@ -8,10 +8,11 @@ namespace CasusBlok2Main.Database
 {
     class Belmoment
     {
-        public int klantid { get; set; }
+        public int belmomentid { get; set; }
         public string tijdstip { get; set; } //moet datetime worden
         public string datum { get; set; }  //moet datetime worden
         public int status { get; set; }
-        public string notitie { get; set; }
+        public int klantid { get; set; }
+        public string data { get; set; }
     }
 }
