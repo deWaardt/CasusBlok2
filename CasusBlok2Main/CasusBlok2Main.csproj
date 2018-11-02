@@ -116,6 +116,23 @@
     </Compile>
     <Compile Include="Views\WachtwoordChange.xaml.cs">
       <DependentUpon>WachtwoordChange.xaml</DependentUpon>
+    <Compile Include="Views\MedewerkerActies\DialogZieGebruiker.xaml.cs">
+      <DependentUpon>DialogZieGebruiker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedewerkerActies\ZieAanvragen.xaml.cs">
+      <DependentUpon>ZieAanvragen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedewerkerActies\ZieBelmomenten.xaml.cs">
+      <DependentUpon>ZieBelmomenten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedewerkerActies\ZieKlachten.xaml.cs">
+      <DependentUpon>ZieKlachten.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedewerkerActies\ZieKlantInfo.xaml.cs">
+      <DependentUpon>ZieKlantInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MedewerkerPanel.xaml.cs">
+      <DependentUpon>MedewerkerPanel.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +198,27 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Vragen.xaml">
+    <Page Include="Views\MedewerkerActies\DialogZieGebruiker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedewerkerActies\ZieAanvragen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedewerkerActies\ZieBelmomenten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedewerkerActies\ZieKlachten.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedewerkerActies\ZieKlantInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MedewerkerPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
