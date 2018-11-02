@@ -31,11 +31,7 @@ namespace CasusBlok2Main.Views
             pls.Show();
             db = new MsSqlDBController();
             pls.Close();
-<<<<<<< HEAD
-
-=======
             MedewerkerMode = false;
->>>>>>> master
         }
 
         private void Fout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
