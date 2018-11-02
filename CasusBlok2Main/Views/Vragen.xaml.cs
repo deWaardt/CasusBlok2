@@ -67,7 +67,7 @@ namespace CasusBlok2Main.Views
             aanvraag.data = VraagTxtbx.Text;
             //aanvraag.datum = DateTime.Now.ToString();
             //aanvraag.status = 0;
-            DbController db = new DbController();
+            MsSqlDBController db = new MsSqlDBController();
             msdb.pushAanvraag(aanvraag);
         }
 
