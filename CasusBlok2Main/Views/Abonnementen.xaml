@@ -8,20 +8,33 @@
         mc:Ignorable="d"
         Title="Abonnementen" Height="450" Width="800">
     <Grid>
-        <Button x:Name="Home_button" Content="Home" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="75"  RenderTransformOrigin="0.497,0.464" Click="HomeBtn_Click"/>
+        <Label Content="Abonnement A" HorizontalAlignment="Left" Margin="156,152,0,0" VerticalAlignment="Top"/>
+        <Label Content="Abonnement B" HorizontalAlignment="Left" Margin="361,152,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="OptieA" Content="Abonnement A" HorizontalAlignment="Left" Margin="156,327,0,0" VerticalAlignment="Top" Width="90"  Height="28" Click="OptieA_Click"/>
+        <Button x:Name="OptieB" Content="Abonnement B" HorizontalAlignment="Left" Margin="360,327,0,0" VerticalAlignment="Top" Width="90"  Height="28" Click="OptieB_Click"/>
+        <Button x:Name="OptieC" Content="Abonnement C" HorizontalAlignment="Left" Margin="545,327,0,0" VerticalAlignment="Top" Width="90"  Height="28" Click="OptieC_Click"/>
+        <Button x:Name="Home_button" Content="Home" HorizontalAlignment="Left" Margin="114,30,0,0" VerticalAlignment="Top" Width="75"  RenderTransformOrigin="0.497,0.464" Click="HomeBtn_Click" />
         <Button x:Name="AbonnementenBtn" Content="Abonnementen" HorizontalAlignment="Left" Margin="194,30,0,0" VerticalAlignment="Top" Width="86" Click="AbonnementenBtn_Click"/>
         <Button x:Name="VerhuisBtn" Content="Verhuizing" HorizontalAlignment="Left" Margin="285,30,0,0" VerticalAlignment="Top" Width="75" Click="VerhuisBtn_Click"/>
+<<<<<<< HEAD
         <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="605,30,0,0" VerticalAlignment="Top" Width="75" Click="SettingsBtn_Click"/>
         <Button x:Name="AccountBtn" Content="Account" HorizontalAlignment="Left" Margin="685,30,0,0" VerticalAlignment="Top" Width="75" Click="AccountBtn_Click"/>
+=======
+        <Button x:Name="SettingsBtn" Content="Settings" HorizontalAlignment="Left" Margin="601,30,0,0" VerticalAlignment="Top" Width="75"  Click="SettingsBtn_Click"/>
+        <Button x:Name="AccountBtn" Content="Account" HorizontalAlignment="Left" Margin="681,30,0,0" VerticalAlignment="Top" Width="75" Click="AccountBtn_Click"/>
+>>>>>>> Abonnementen
         <Button x:Name="FacturenBtn" Content="Facturen" HorizontalAlignment="Left" Margin="365,30,0,0" VerticalAlignment="Top" Width="75" Click="FacturenBtn_Click"/>
         <Button x:Name="KlachtenVragenBtn" Content="Vragen" HorizontalAlignment="Left" Margin="445,30,0,0" VerticalAlignment="Top" Width="75" Click="KlachtenVragenBtn_Click"/>
         <Canvas x:Name="Logo" HorizontalAlignment="Left" Height="51" Margin="10,10,0,0" VerticalAlignment="Top" Width="82" Background="#FFA7F110"/>
-        <Label Content="Abonnement A" HorizontalAlignment="Left" Margin="156,152,0,0" VerticalAlignment="Top"/>
         <Label Content="Abonnement C" HorizontalAlignment="Left" Margin="545,152,0,0" VerticalAlignment="Top" RenderTransformOrigin="11.751,0.482"/>
+<<<<<<< HEAD
         <Label Content="Abonnement B" HorizontalAlignment="Left" Margin="361,152,0,0" VerticalAlignment="Top"/>
         <Button Content="Abonnement A" HorizontalAlignment="Left" Margin="156,327,0,0" VerticalAlignment="Top" Width="90" Height="28"/>
         <Button Content="Abonnement B" HorizontalAlignment="Left" Margin="360,327,0,0" VerticalAlignment="Top" Width="90" Height="28"/>
         <Button Content="Abonnement C" HorizontalAlignment="Left" Margin="545,336,0,0" VerticalAlignment="Top" Width="90" Height="28"/>
         <Button x:Name="KlachtenBtn" Content="Klachten" HorizontalAlignment="Left" Margin="525,30,0,0" VerticalAlignment="Top" Width="75" Click="KlachtenBtn_Click"/>
+=======
+
+>>>>>>> Abonnementen
     </Grid>
 </Window>

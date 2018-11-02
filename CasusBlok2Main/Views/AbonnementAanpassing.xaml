@@ -1,0 +1,18 @@
+﻿<Window x:Class="CasusBlok2Main.Views.AbonnementAanpassing"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CasusBlok2Main.Views"
+        mc:Ignorable="d"
+        Title="AbonnementAanpassing" Height="450" Width="800">
+    <Grid>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="257" Margin="25,123,0,0" VerticalAlignment="Top" Width="695"/>
+        <Label x:Name="LabelHuidigeAbonnement" Content="Huidige abonnement" HorizontalAlignment="Left" Margin="552,141,0,0" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="AbonnementAnnuleren" Content="Annuleren" HorizontalAlignment="Left" Margin="82,341,0,0" VerticalAlignment="Top" Width="75" />
+        <Button x:Name="AbonnementBevestigen" Content="Bevestigen" HorizontalAlignment="Left" Margin="361,341,0,0" VerticalAlignment="Top" Width="75" />
+        <Label x:Name="LabelAanpassingKeuze" Content="Abonnement wijzigen" HorizontalAlignment="Left" Margin="62,149,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextboxAbonnement" HorizontalAlignment="Left" Height="123" Margin="62,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="374" />
+
+    </Grid>
+</Window>
