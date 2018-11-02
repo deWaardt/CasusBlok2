@@ -81,13 +81,14 @@ namespace CasusBlok2Main.Views
             //   this.Close();
         }
 
-<<<<<<< HEAD
+
         private void KlachtenBtn_Click(object sender, RoutedEventArgs e)
         {
             Klachten klacht = new Klachten();
             klacht.Show();
             this.Close();
-=======
+        }
+
         private void OptieA_Click(object sender, RoutedEventArgs e)
         {
             //check of klant abo heeft; if abo dan heeftabo >0;
@@ -108,7 +109,6 @@ namespace CasusBlok2Main.Views
                 editabonnee.klantid = Main.Mainframe.currentLoggedIn.klantid;
                 db.editKlantAbonnement(editabonnee);
             }
->>>>>>> Abonnementen
         }
 
         private void OptieB_Click(object sender, RoutedEventArgs e)
