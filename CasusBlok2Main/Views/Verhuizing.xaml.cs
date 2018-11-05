@@ -11,44 +11,105 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-// using  MySQL
+using CasusBlok2Main.Database;
+using CasusBlok2Main.Main;
 
 namespace CasusBlok2Main.Views
 {
     /// <summary>
-    /// Interaction logic for Window2.xaml
+    /// Interaction logic for Verhuizing.xaml
     /// </summary>
-    public partial class Klantverhuizing : Window
+    public partial class Verhuizing : Window
     {
-        MsSqlDBController db;
+        private void KlachtenVragenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Vragen vraagscherm = new Vragen();
+            vraagscherm.Show();
+            this.Close();
+        }
 
-        public Klantverhuizing()
+        private void AbonnementenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Abbonementen abboscherm = new Abbonementen();
+            abboscherm.Show();
+            this.Close();
+        }
+
+        private void AccountBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Accountv2 accscherm = new Accountv2();
+            //accscherm.Show();
+            //this.Close();
+        }
+
+        private void FacturenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //Factuurv2 facscherm = new Factuurv2();
+            //facscherm.Show();
+            //this.Close();
+        }
+
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Home homescherm = new Home();
+            homescherm.Show();
+            this.Close();
+        }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //    Settings settscherm = new Settings();
+            //    settscherm.Show();
+            //    this.Close();
+        }
+
+        private void VerhuisBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Verhuizing  verhscherm = new Verhuizing();
+            verhscherm.Show();
+            this.Close();
+        }
+
+
+        private void KlachtenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Klachten klacht = new Klachten();
+            klacht.Show();
+            this.Close();
+        }
+
+        DbController db;
+
+        public Verhuizing()
         {
             InitializeComponent();
-            db = new MsSqlDBController();
-            Klantverhuizing klantAdres = db.getAdres(klantid);
-            string klantStraat = klantAdres.straat;
-            int klantHuisnummer = klantAdres.huisnummer;
-            string klantToevoeging = klantAdres.toevoeging;
-            string klantPostcode = klantAdres.postcode;
-            string klantWoonplaats = klantAdres.woonplaats;
+            db = new DbController();
+
+            // KAN PAS UNCOMMENTED ZIJN WANNEER DIT IN MYSQL DATABASE IS TOEGEVOEGD
+
+            //Verhuizing klantAdres = db.getAdres(klantid);
+            //string klantStraat = klantAdres.straat;
+            //string klantHuisnummer = klantAdres.huisnummer;
+            //string klantToevoeging = klantAdres.toevoeging;
+            //string klantPostcode = klantAdres.postcode;
+            //string klantWoonplaats = klantAdres.woonplaats;
 
             // labels van het huidige adres met daarin het huidige adres ingevuld
-            oudStraatlbl.Content = "Uw oude straatnaam is: " + klantStraat;
-            oudHuisnummerlbl.Content = "Uw oud huisnummer is: " + klantHuisnummer;
-            oudToevoeginglbl.Content = "Uw oude toevoeging is: " + klantToevoeging;
-            oudPostcodelbl.Content = "Uw oude postcode is: " + klantPostcode;
-            oudWoonplaatslbl.Content = "Uw oude woonplaats is: " + klantWoonplaats;
+            //oudStraatlbl.Content = klantStraat;
+            //oudHuisnummerlbl.Content = klantHuisnummer;
+            //oudToevoeginglbl.Content = klantToevoeging;
+            //oudPostcodelbl.Content = klantPostcode;
+            //oudWoonplaatslbl.Content = klantWoonplaats;
         }
 
         private void AdresWijzigen_Click(object sender, RoutedEventArgs e)
         {
             // Dit zijn de gegevens van het nieuwe adres
-            string newStraat = newStraattextbox.Content;
-            int newHuisnummer = newHuisnummertextbox.Content;
-            string newToevoeging = newToevoegingtextbox.Content;
-            string newPostcode = newPostcodetextbox.Content;
-            string newWoonplaats = newWoonplaatstextbox.Content;
+            string newStraat = newStraattextbox.Text;
+            string newHuisnummer = newHuisnummertextbox.Text;
+            string newToevoeging = newToevoegingtextbox.Text;
+            string newPostcode = newPostcodetextbox.Text;
+            string newWoonplaats = newWoonplaatstextbox.Text;
 
             // voer functie editAdres van MySqlDBController uit
 

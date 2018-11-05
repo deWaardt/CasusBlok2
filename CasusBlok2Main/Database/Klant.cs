@@ -17,5 +17,12 @@ namespace CasusBlok2Main.Database
         public string geboortedatum { get; set; }
         public string telefoonnummer { get; set; }
 
+        // TOEGEVOEGD IN DATABASE, MOET VERWERKT WORDEN IN BETROKKEN CODE
+        public string straat { get; set; }
+        public string huisnummer { get; set; }
+        public string toevoeging { get; set; }
+        public string postcode { get; set; }
+        public string woonplaats { get; set; }
+
     }
 }

@@ -23,21 +23,20 @@
         <Button x:Name="complaintsHeader" Content="Klachten" HorizontalAlignment="Left" Margin="521,30,0,0" VerticalAlignment="Top" Width="75"/>
         <Canvas x:Name="ContentBordr" HorizontalAlignment="Left" Height="312" Margin="46,81,0,0" VerticalAlignment="Top" Width="710" Background="#FFBFB7B7">
             <Label Content="Geef een verhuizing door" Canvas.Left="65" Canvas.Top="10" FontWeight="Bold" FontSize="16"/>
-            <Button x:Name="AdresWijzigen" Content="Bevestig" Canvas.Left="277" Canvas.Top="267" Width="75" Click="AdresWijzigen_Click"/>
-            <Button Content="Annuleren" Canvas.Left="393" Canvas.Top="267" Width="75" RenderTransformOrigin="0.513,0.45" Click="VerhuizingAnnuleren_Click"/>
-            <Label Content="Uw oude adres" Canvas.Left="236" Canvas.Top="75"/>
-            <Label Content="Uw nieuwe adres" Canvas.Left="392" Canvas.Top="79"/>
-            <TextBox x:Name="newWoonplaatstextbox" Height="27" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe woonplaats" Canvas.Top="102" Width="115"/>
-            <TextBox x:Name="newStraattextbox" Height="28" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe straatnaam" Canvas.Top="134" Width="115"/>
-            <Label x:Name="oudWoonplaatslbl" Content="Woonplaats" Canvas.Left="159" Canvas.Top="103"/>
-            <Label x:Name="oudStraatlbl" Content="Straatnaam" Canvas.Left="158" Canvas.Top="136"/>
-            <Label x:Name="oudHuisnummerlbl" Content="Huisnummer" Canvas.Left="158" Canvas.Top="165"/>
-            <Label x:Name="oudToevoeginglbl" Content="Toevoeging" Canvas.Left="158" Canvas.Top="196" RenderTransformOrigin="-0.155,0.577"/>
-            <TextBox x:Name="newHuisnummertextbox" Height="28" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuw huisnummer" Canvas.Top="165" Width="115"/>
-            <TextBox x:Name="newToevoegingtextbox" Height="26" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe toevoeging" Canvas.Top="196" Width="115"/>
-            <Label Content=" voor de &#xD;&#xA;casusgroep: vakken &#xD;&#xA;onder &quot;oud adres&quot;&#xD;&#xA;zijn labels, geen textboxes" Canvas.Top="75" Height="87" Width="154" FontWeight="Bold"/>
-            <Label x:Name="oudPostcodelbl" Content="Postcode" Canvas.Left="158" Canvas.Top="227"/>
-            <TextBox x:Name="newPostcodetextbox" Height="27" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe postcode" Canvas.Top="227" Width="115"/>
+            <Button x:Name="AdresWijzigen" Content="Bevestig" Canvas.Left="236" Canvas.Top="257" Width="127" Click="AdresWijzigen_Click" Height="30"/>
+            <Button Content="Annuleren" Canvas.Left="392" Canvas.Top="257" Width="125" RenderTransformOrigin="0.513,0.45" Click="VerhuizingAnnuleren_Click" Height="30"/>
+            <Label Content="Uw oude adres" Canvas.Left="236" Canvas.Top="75" Width="116" FontWeight="Bold"/>
+            <Label Content="Uw nieuwe adres" Canvas.Left="392" Canvas.Top="75" FontWeight="Bold"/>
+            <TextBox x:Name="newWoonplaatstextbox" Height="26" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe woonplaats" Canvas.Top="107" Width="125"/>
+            <TextBox x:Name="newStraattextbox" Height="26" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe straatnaam" Canvas.Top="133" Width="125"/>
+            <Label x:Name="oudWoonplaatslbl" Content="Woonplaats" Canvas.Left="238" Canvas.Top="103" Width="125"/>
+            <Label x:Name="oudStraatlbl" Content="Straatnaam" Canvas.Left="238" Canvas.Top="129" Width="125"/>
+            <Label x:Name="oudHuisnummerlbl" Content="Huisnummer" Canvas.Left="238" Canvas.Top="155" Width="125"/>
+            <Label x:Name="oudToevoeginglbl" Content="Toevoeging" Canvas.Left="238" Canvas.Top="181" RenderTransformOrigin="-0.155,0.577" Width="125"/>
+            <TextBox x:Name="newHuisnummertextbox" Height="26" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuw huisnummer" Canvas.Top="159" Width="125"/>
+            <TextBox x:Name="newToevoegingtextbox" Height="26" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe toevoeging" Canvas.Top="185" Width="125"/>
+            <Label x:Name="oudPostcodelbl" Content="Postcode" Canvas.Left="238" Canvas.Top="207" Width="125"/>
+            <TextBox x:Name="newPostcodetextbox" Height="27" Canvas.Left="392" TextWrapping="Wrap" Text="Nieuwe postcode" Canvas.Top="211" Width="125"/>
         </Canvas>
 
         <Label Content="Label" HorizontalAlignment="Left" Margin="976,201,-284,0" VerticalAlignment="Top" Width="100"/>

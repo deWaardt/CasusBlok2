@@ -17,9 +17,9 @@ namespace CasusBlok2Main.Views
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class FAQ : Window
     {
-        public Window1()
+        public FAQ()
         {
             InitializeComponent();
         }
